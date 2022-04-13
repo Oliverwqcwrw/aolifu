@@ -6,9 +6,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 @NacosPropertySource(dataId = "example", autoRefreshed = true)
-public class NacosConfigApplication {
+public class NacosApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(NacosConfigApplication.class, args);
+        SpringApplication.run(NacosApplication.class, args);
     }
 }
