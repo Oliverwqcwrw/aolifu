@@ -8,7 +8,6 @@ dubbo:
     name: aolifu-dubbo-provider
   protocol:
     port: 20880
-    name: dubbo
 
 spring:
   application:

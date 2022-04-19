@@ -1,6 +1,7 @@
 package com.aolifu.dubbo.provider;
 
 import com.alibaba.dubbo.config.annotation.Service;
+import com.aolifu.dubbo.api.ProviderService;
 import org.springframework.stereotype.Component;
 
 @Service(version = "1.0.0")
