@@ -15,7 +15,10 @@
   <version>1.0</version>
   <modules>
     <module>aolifu-rocketMQ</module>
-      <module>aolifu-nacos</module>
+    <module>aolifu-nacos</module>
+    <module>aolifu-dubbo-provider</module>
+    <module>aolifu-dubbo-consumer</module>
+    <module>aolifu-mq-starter</module>
   </modules>
 
   <name>Maven</name>

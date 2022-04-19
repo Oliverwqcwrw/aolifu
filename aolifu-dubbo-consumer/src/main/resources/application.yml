@@ -1,0 +1,19 @@
+server:
+  port: 8083
+spring:
+  dubbo:
+    application:
+      name: aolifu-dubbo-consumer
+    base-package: com.aolifu.dubbo.consumer  # dubbo服务调用者所在的包
+    registry:
+      address: 127.0.0.1  # zookeeper注册中心的地址
+      port: 2181              # zookeeper注册中心的端口
+      protocol: zookeeper
+      subscribe: true
+    protocol:
+      name: dubbo
+      host: 127.0.0.1
+    consumer:
+      timeout: 1000
+      check: false  # 服务启动时检查被调用服务是否可用
+      retries: 2    # 服务调用重试次数

@@ -5,16 +5,11 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.aolifu</groupId>
-  <artifactId>aolifu-rocketMQ</artifactId>
+  <artifactId>aolifu-mq-starter</artifactId>
   <version>1.0</version>
 
-  <name>aolifu-rocketMQ</name>
+  <name>aolifu-mq-starter</name>
 
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <maven.compiler.source>1.8</maven.compiler.source>
-    <maven.compiler.target>1.8</maven.compiler.target>
-  </properties>
 
   <dependencies>
     <dependency>
