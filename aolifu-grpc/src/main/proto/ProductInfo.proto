@@ -1,0 +1,19 @@
+syntax  = "proto3";
+
+package com.aolifu.proto;
+
+service ProductInfo{
+  rpc addProduct(Product) returns (ProductId);
+
+  rpc getProduuct(ProductId) returns (Product);
+}
+
+message Product{
+  string id = 1;
+  string name = 2;
+  string description = 3;
+}
+
+message ProductId{
+  string value = 1;
+}

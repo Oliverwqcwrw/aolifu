@@ -20,6 +20,7 @@
     <module>aolifu-dubbo-provider</module>
     <module>aolifu-dubbo-consumer</module>
     <module>aolifu-mq-starter</module>
+    <module>aolifu-grpc</module>
   </modules>
 
   <name>Maven</name>
