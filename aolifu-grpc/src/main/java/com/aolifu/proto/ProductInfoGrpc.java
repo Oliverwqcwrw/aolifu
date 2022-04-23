@@ -24,68 +24,68 @@ public final class ProductInfoGrpc {
 
   private ProductInfoGrpc() {}
 
-  public static final String SERVICE_NAME = "com.aolifu.proto.ProductInfo";
+  public static final String SERVICE_NAME = "ProductInfo";
 
   // Static method descriptors that strictly reflect the proto.
   @io.grpc.ExperimentalApi("https://github.com/grpc/grpc-java/issues/1901")
-  public static final io.grpc.MethodDescriptor<com.aolifu.proto.ProductInfoOuterClass.Product,
-      com.aolifu.proto.ProductInfoOuterClass.ProductId> METHOD_ADD_PRODUCT =
-      io.grpc.MethodDescriptor.<com.aolifu.proto.ProductInfoOuterClass.Product, com.aolifu.proto.ProductInfoOuterClass.ProductId>newBuilder()
+  public static final io.grpc.MethodDescriptor<com.aolifu.proto.Product,
+      com.aolifu.proto.ProductId> METHOD_ADD_PRODUCT =
+      io.grpc.MethodDescriptor.<com.aolifu.proto.Product, com.aolifu.proto.ProductId>newBuilder()
           .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
           .setFullMethodName(generateFullMethodName(
-              "com.aolifu.proto.ProductInfo", "addProduct"))
+              "ProductInfo", "addProduct"))
           .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-              com.aolifu.proto.ProductInfoOuterClass.Product.getDefaultInstance()))
+              com.aolifu.proto.Product.getDefaultInstance()))
           .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-              com.aolifu.proto.ProductInfoOuterClass.ProductId.getDefaultInstance()))
+              com.aolifu.proto.ProductId.getDefaultInstance()))
           .build();
   @io.grpc.ExperimentalApi("https://github.com/grpc/grpc-java/issues/1901")
-  public static final io.grpc.MethodDescriptor<com.aolifu.proto.ProductInfoOuterClass.ProductId,
-      com.aolifu.proto.ProductInfoOuterClass.Product> METHOD_GET_PRODUCT =
-      io.grpc.MethodDescriptor.<com.aolifu.proto.ProductInfoOuterClass.ProductId, com.aolifu.proto.ProductInfoOuterClass.Product>newBuilder()
+  public static final io.grpc.MethodDescriptor<com.aolifu.proto.ProductId,
+      com.aolifu.proto.Product> METHOD_GET_PRODUCT =
+      io.grpc.MethodDescriptor.<com.aolifu.proto.ProductId, com.aolifu.proto.Product>newBuilder()
           .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
           .setFullMethodName(generateFullMethodName(
-              "com.aolifu.proto.ProductInfo", "getProduct"))
+              "ProductInfo", "getProduct"))
           .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-              com.aolifu.proto.ProductInfoOuterClass.ProductId.getDefaultInstance()))
+              com.aolifu.proto.ProductId.getDefaultInstance()))
           .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-              com.aolifu.proto.ProductInfoOuterClass.Product.getDefaultInstance()))
+              com.aolifu.proto.Product.getDefaultInstance()))
           .build();
   @io.grpc.ExperimentalApi("https://github.com/grpc/grpc-java/issues/1901")
-  public static final io.grpc.MethodDescriptor<com.aolifu.proto.ProductInfoOuterClass.ProductId,
-      com.aolifu.proto.ProductInfoOuterClass.Product> METHOD_SEARCH_PRODUCT =
-      io.grpc.MethodDescriptor.<com.aolifu.proto.ProductInfoOuterClass.ProductId, com.aolifu.proto.ProductInfoOuterClass.Product>newBuilder()
+  public static final io.grpc.MethodDescriptor<com.aolifu.proto.ProductId,
+      com.aolifu.proto.Product> METHOD_SEARCH_PRODUCT =
+      io.grpc.MethodDescriptor.<com.aolifu.proto.ProductId, com.aolifu.proto.Product>newBuilder()
           .setType(io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
           .setFullMethodName(generateFullMethodName(
-              "com.aolifu.proto.ProductInfo", "searchProduct"))
+              "ProductInfo", "searchProduct"))
           .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-              com.aolifu.proto.ProductInfoOuterClass.ProductId.getDefaultInstance()))
+              com.aolifu.proto.ProductId.getDefaultInstance()))
           .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-              com.aolifu.proto.ProductInfoOuterClass.Product.getDefaultInstance()))
+              com.aolifu.proto.Product.getDefaultInstance()))
           .build();
   @io.grpc.ExperimentalApi("https://github.com/grpc/grpc-java/issues/1901")
-  public static final io.grpc.MethodDescriptor<com.aolifu.proto.ProductInfoOuterClass.Product,
-      com.aolifu.proto.ProductInfoOuterClass.ProductId> METHOD_UPDATE_PRODUCT =
-      io.grpc.MethodDescriptor.<com.aolifu.proto.ProductInfoOuterClass.Product, com.aolifu.proto.ProductInfoOuterClass.ProductId>newBuilder()
+  public static final io.grpc.MethodDescriptor<com.aolifu.proto.Product,
+      com.aolifu.proto.ProductId> METHOD_UPDATE_PRODUCT =
+      io.grpc.MethodDescriptor.<com.aolifu.proto.Product, com.aolifu.proto.ProductId>newBuilder()
           .setType(io.grpc.MethodDescriptor.MethodType.CLIENT_STREAMING)
           .setFullMethodName(generateFullMethodName(
-              "com.aolifu.proto.ProductInfo", "updateProduct"))
+              "ProductInfo", "updateProduct"))
           .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-              com.aolifu.proto.ProductInfoOuterClass.Product.getDefaultInstance()))
+              com.aolifu.proto.Product.getDefaultInstance()))
           .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-              com.aolifu.proto.ProductInfoOuterClass.ProductId.getDefaultInstance()))
+              com.aolifu.proto.ProductId.getDefaultInstance()))
           .build();
   @io.grpc.ExperimentalApi("https://github.com/grpc/grpc-java/issues/1901")
-  public static final io.grpc.MethodDescriptor<com.aolifu.proto.ProductInfoOuterClass.Product,
-      com.aolifu.proto.ProductInfoOuterClass.ProductId> METHOD_PROCESS_PRODUCT =
-      io.grpc.MethodDescriptor.<com.aolifu.proto.ProductInfoOuterClass.Product, com.aolifu.proto.ProductInfoOuterClass.ProductId>newBuilder()
+  public static final io.grpc.MethodDescriptor<com.aolifu.proto.Product,
+      com.aolifu.proto.ProductId> METHOD_PROCESS_PRODUCT =
+      io.grpc.MethodDescriptor.<com.aolifu.proto.Product, com.aolifu.proto.ProductId>newBuilder()
           .setType(io.grpc.MethodDescriptor.MethodType.BIDI_STREAMING)
           .setFullMethodName(generateFullMethodName(
-              "com.aolifu.proto.ProductInfo", "processProduct"))
+              "ProductInfo", "processProduct"))
           .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-              com.aolifu.proto.ProductInfoOuterClass.Product.getDefaultInstance()))
+              com.aolifu.proto.Product.getDefaultInstance()))
           .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-              com.aolifu.proto.ProductInfoOuterClass.ProductId.getDefaultInstance()))
+              com.aolifu.proto.ProductId.getDefaultInstance()))
           .build();
 
   /**
@@ -117,36 +117,36 @@ public final class ProductInfoGrpc {
 
     /**
      */
-    public void addProduct(com.aolifu.proto.ProductInfoOuterClass.Product request,
-        io.grpc.stub.StreamObserver<com.aolifu.proto.ProductInfoOuterClass.ProductId> responseObserver) {
+    public void addProduct(com.aolifu.proto.Product request,
+        io.grpc.stub.StreamObserver<com.aolifu.proto.ProductId> responseObserver) {
       asyncUnimplementedUnaryCall(METHOD_ADD_PRODUCT, responseObserver);
     }
 
     /**
      */
-    public void getProduct(com.aolifu.proto.ProductInfoOuterClass.ProductId request,
-        io.grpc.stub.StreamObserver<com.aolifu.proto.ProductInfoOuterClass.Product> responseObserver) {
+    public void getProduct(com.aolifu.proto.ProductId request,
+        io.grpc.stub.StreamObserver<com.aolifu.proto.Product> responseObserver) {
       asyncUnimplementedUnaryCall(METHOD_GET_PRODUCT, responseObserver);
     }
 
     /**
      */
-    public void searchProduct(com.aolifu.proto.ProductInfoOuterClass.ProductId request,
-        io.grpc.stub.StreamObserver<com.aolifu.proto.ProductInfoOuterClass.Product> responseObserver) {
+    public void searchProduct(com.aolifu.proto.ProductId request,
+        io.grpc.stub.StreamObserver<com.aolifu.proto.Product> responseObserver) {
       asyncUnimplementedUnaryCall(METHOD_SEARCH_PRODUCT, responseObserver);
     }
 
     /**
      */
-    public io.grpc.stub.StreamObserver<com.aolifu.proto.ProductInfoOuterClass.Product> updateProduct(
-        io.grpc.stub.StreamObserver<com.aolifu.proto.ProductInfoOuterClass.ProductId> responseObserver) {
+    public io.grpc.stub.StreamObserver<com.aolifu.proto.Product> updateProduct(
+        io.grpc.stub.StreamObserver<com.aolifu.proto.ProductId> responseObserver) {
       return asyncUnimplementedStreamingCall(METHOD_UPDATE_PRODUCT, responseObserver);
     }
 
     /**
      */
-    public io.grpc.stub.StreamObserver<com.aolifu.proto.ProductInfoOuterClass.Product> processProduct(
-        io.grpc.stub.StreamObserver<com.aolifu.proto.ProductInfoOuterClass.ProductId> responseObserver) {
+    public io.grpc.stub.StreamObserver<com.aolifu.proto.Product> processProduct(
+        io.grpc.stub.StreamObserver<com.aolifu.proto.ProductId> responseObserver) {
       return asyncUnimplementedStreamingCall(METHOD_PROCESS_PRODUCT, responseObserver);
     }
 
@@ -156,36 +156,36 @@ public final class ProductInfoGrpc {
             METHOD_ADD_PRODUCT,
             asyncUnaryCall(
               new MethodHandlers<
-                com.aolifu.proto.ProductInfoOuterClass.Product,
-                com.aolifu.proto.ProductInfoOuterClass.ProductId>(
+                com.aolifu.proto.Product,
+                com.aolifu.proto.ProductId>(
                   this, METHODID_ADD_PRODUCT)))
           .addMethod(
             METHOD_GET_PRODUCT,
             asyncUnaryCall(
               new MethodHandlers<
-                com.aolifu.proto.ProductInfoOuterClass.ProductId,
-                com.aolifu.proto.ProductInfoOuterClass.Product>(
+                com.aolifu.proto.ProductId,
+                com.aolifu.proto.Product>(
                   this, METHODID_GET_PRODUCT)))
           .addMethod(
             METHOD_SEARCH_PRODUCT,
             asyncServerStreamingCall(
               new MethodHandlers<
-                com.aolifu.proto.ProductInfoOuterClass.ProductId,
-                com.aolifu.proto.ProductInfoOuterClass.Product>(
+                com.aolifu.proto.ProductId,
+                com.aolifu.proto.Product>(
                   this, METHODID_SEARCH_PRODUCT)))
           .addMethod(
             METHOD_UPDATE_PRODUCT,
             asyncClientStreamingCall(
               new MethodHandlers<
-                com.aolifu.proto.ProductInfoOuterClass.Product,
-                com.aolifu.proto.ProductInfoOuterClass.ProductId>(
+                com.aolifu.proto.Product,
+                com.aolifu.proto.ProductId>(
                   this, METHODID_UPDATE_PRODUCT)))
           .addMethod(
             METHOD_PROCESS_PRODUCT,
             asyncBidiStreamingCall(
               new MethodHandlers<
-                com.aolifu.proto.ProductInfoOuterClass.Product,
-                com.aolifu.proto.ProductInfoOuterClass.ProductId>(
+                com.aolifu.proto.Product,
+                com.aolifu.proto.ProductId>(
                   this, METHODID_PROCESS_PRODUCT)))
           .build();
     }
@@ -211,40 +211,40 @@ public final class ProductInfoGrpc {
 
     /**
      */
-    public void addProduct(com.aolifu.proto.ProductInfoOuterClass.Product request,
-        io.grpc.stub.StreamObserver<com.aolifu.proto.ProductInfoOuterClass.ProductId> responseObserver) {
+    public void addProduct(com.aolifu.proto.Product request,
+        io.grpc.stub.StreamObserver<com.aolifu.proto.ProductId> responseObserver) {
       asyncUnaryCall(
           getChannel().newCall(METHOD_ADD_PRODUCT, getCallOptions()), request, responseObserver);
     }
 
     /**
      */
-    public void getProduct(com.aolifu.proto.ProductInfoOuterClass.ProductId request,
-        io.grpc.stub.StreamObserver<com.aolifu.proto.ProductInfoOuterClass.Product> responseObserver) {
+    public void getProduct(com.aolifu.proto.ProductId request,
+        io.grpc.stub.StreamObserver<com.aolifu.proto.Product> responseObserver) {
       asyncUnaryCall(
           getChannel().newCall(METHOD_GET_PRODUCT, getCallOptions()), request, responseObserver);
     }
 
     /**
      */
-    public void searchProduct(com.aolifu.proto.ProductInfoOuterClass.ProductId request,
-        io.grpc.stub.StreamObserver<com.aolifu.proto.ProductInfoOuterClass.Product> responseObserver) {
+    public void searchProduct(com.aolifu.proto.ProductId request,
+        io.grpc.stub.StreamObserver<com.aolifu.proto.Product> responseObserver) {
       asyncServerStreamingCall(
           getChannel().newCall(METHOD_SEARCH_PRODUCT, getCallOptions()), request, responseObserver);
     }
 
     /**
      */
-    public io.grpc.stub.StreamObserver<com.aolifu.proto.ProductInfoOuterClass.Product> updateProduct(
-        io.grpc.stub.StreamObserver<com.aolifu.proto.ProductInfoOuterClass.ProductId> responseObserver) {
+    public io.grpc.stub.StreamObserver<com.aolifu.proto.Product> updateProduct(
+        io.grpc.stub.StreamObserver<com.aolifu.proto.ProductId> responseObserver) {
       return asyncClientStreamingCall(
           getChannel().newCall(METHOD_UPDATE_PRODUCT, getCallOptions()), responseObserver);
     }
 
     /**
      */
-    public io.grpc.stub.StreamObserver<com.aolifu.proto.ProductInfoOuterClass.Product> processProduct(
-        io.grpc.stub.StreamObserver<com.aolifu.proto.ProductInfoOuterClass.ProductId> responseObserver) {
+    public io.grpc.stub.StreamObserver<com.aolifu.proto.Product> processProduct(
+        io.grpc.stub.StreamObserver<com.aolifu.proto.ProductId> responseObserver) {
       return asyncBidiStreamingCall(
           getChannel().newCall(METHOD_PROCESS_PRODUCT, getCallOptions()), responseObserver);
     }
@@ -270,22 +270,22 @@ public final class ProductInfoGrpc {
 
     /**
      */
-    public com.aolifu.proto.ProductInfoOuterClass.ProductId addProduct(com.aolifu.proto.ProductInfoOuterClass.Product request) {
+    public com.aolifu.proto.ProductId addProduct(com.aolifu.proto.Product request) {
       return blockingUnaryCall(
           getChannel(), METHOD_ADD_PRODUCT, getCallOptions(), request);
     }
 
     /**
      */
-    public com.aolifu.proto.ProductInfoOuterClass.Product getProduct(com.aolifu.proto.ProductInfoOuterClass.ProductId request) {
+    public com.aolifu.proto.Product getProduct(com.aolifu.proto.ProductId request) {
       return blockingUnaryCall(
           getChannel(), METHOD_GET_PRODUCT, getCallOptions(), request);
     }
 
     /**
      */
-    public java.util.Iterator<com.aolifu.proto.ProductInfoOuterClass.Product> searchProduct(
-        com.aolifu.proto.ProductInfoOuterClass.ProductId request) {
+    public java.util.Iterator<com.aolifu.proto.Product> searchProduct(
+        com.aolifu.proto.ProductId request) {
       return blockingServerStreamingCall(
           getChannel(), METHOD_SEARCH_PRODUCT, getCallOptions(), request);
     }
@@ -311,16 +311,16 @@ public final class ProductInfoGrpc {
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<com.aolifu.proto.ProductInfoOuterClass.ProductId> addProduct(
-        com.aolifu.proto.ProductInfoOuterClass.Product request) {
+    public com.google.common.util.concurrent.ListenableFuture<com.aolifu.proto.ProductId> addProduct(
+        com.aolifu.proto.Product request) {
       return futureUnaryCall(
           getChannel().newCall(METHOD_ADD_PRODUCT, getCallOptions()), request);
     }
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<com.aolifu.proto.ProductInfoOuterClass.Product> getProduct(
-        com.aolifu.proto.ProductInfoOuterClass.ProductId request) {
+    public com.google.common.util.concurrent.ListenableFuture<com.aolifu.proto.Product> getProduct(
+        com.aolifu.proto.ProductId request) {
       return futureUnaryCall(
           getChannel().newCall(METHOD_GET_PRODUCT, getCallOptions()), request);
     }
@@ -350,16 +350,16 @@ public final class ProductInfoGrpc {
     public void invoke(Req request, io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
         case METHODID_ADD_PRODUCT:
-          serviceImpl.addProduct((com.aolifu.proto.ProductInfoOuterClass.Product) request,
-              (io.grpc.stub.StreamObserver<com.aolifu.proto.ProductInfoOuterClass.ProductId>) responseObserver);
+          serviceImpl.addProduct((com.aolifu.proto.Product) request,
+              (io.grpc.stub.StreamObserver<com.aolifu.proto.ProductId>) responseObserver);
           break;
         case METHODID_GET_PRODUCT:
-          serviceImpl.getProduct((com.aolifu.proto.ProductInfoOuterClass.ProductId) request,
-              (io.grpc.stub.StreamObserver<com.aolifu.proto.ProductInfoOuterClass.Product>) responseObserver);
+          serviceImpl.getProduct((com.aolifu.proto.ProductId) request,
+              (io.grpc.stub.StreamObserver<com.aolifu.proto.Product>) responseObserver);
           break;
         case METHODID_SEARCH_PRODUCT:
-          serviceImpl.searchProduct((com.aolifu.proto.ProductInfoOuterClass.ProductId) request,
-              (io.grpc.stub.StreamObserver<com.aolifu.proto.ProductInfoOuterClass.Product>) responseObserver);
+          serviceImpl.searchProduct((com.aolifu.proto.ProductId) request,
+              (io.grpc.stub.StreamObserver<com.aolifu.proto.Product>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -373,10 +373,10 @@ public final class ProductInfoGrpc {
       switch (methodId) {
         case METHODID_UPDATE_PRODUCT:
           return (io.grpc.stub.StreamObserver<Req>) serviceImpl.updateProduct(
-              (io.grpc.stub.StreamObserver<com.aolifu.proto.ProductInfoOuterClass.ProductId>) responseObserver);
+              (io.grpc.stub.StreamObserver<com.aolifu.proto.ProductId>) responseObserver);
         case METHODID_PROCESS_PRODUCT:
           return (io.grpc.stub.StreamObserver<Req>) serviceImpl.processProduct(
-              (io.grpc.stub.StreamObserver<com.aolifu.proto.ProductInfoOuterClass.ProductId>) responseObserver);
+              (io.grpc.stub.StreamObserver<com.aolifu.proto.ProductId>) responseObserver);
         default:
           throw new AssertionError();
       }

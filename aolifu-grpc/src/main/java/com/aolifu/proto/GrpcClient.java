@@ -20,15 +20,15 @@ public class GrpcClient {
 
     // 一元RPC
     public void addProduct(){
-        ProductInfoOuterClass.Product product = ProductInfoOuterClass.Product.newBuilder().setId("111").setName("name1").setDescription("desc1").build();
-        final ProductInfoOuterClass.ProductId productId = productInfoBlockingStub.addProduct(product);
+        Product product = Product.newBuilder().setId("111").setName("name1").setDescription("desc1").build();
+        final ProductId productId = productInfoBlockingStub.addProduct(product);
         System.out.println("请求服务端返回结果：" + productId);
     }
 
     // 服务端流RPC
     public void searchProduct(){
-        final ProductInfoOuterClass.ProductId productId = ProductInfoOuterClass.ProductId.newBuilder().setValue("1").build();
-        final Iterator<ProductInfoOuterClass.Product> productIterator = productInfoBlockingStub.searchProduct(productId);
+        final ProductId productId = ProductId.newBuilder().setValue("1").build();
+        final Iterator<Product> productIterator = productInfoBlockingStub.searchProduct(productId);
         while (productIterator.hasNext()) {
             System.out.println("productId: " + productIterator.next().getId());
         }
@@ -36,9 +36,9 @@ public class GrpcClient {
 
     // 客户端流RPC
     public void updateProduct(){
-        StreamObserver<ProductInfoOuterClass.ProductId> streamObserver = new StreamObserver<ProductInfoOuterClass.ProductId>() {
+        StreamObserver<ProductId> streamObserver = new StreamObserver<ProductId>() {
             @Override
-            public void onNext(ProductInfoOuterClass.ProductId productId) {
+            public void onNext(ProductId productId) {
                 System.out.println(productId);
             }
 
@@ -52,10 +52,10 @@ public class GrpcClient {
                 System.out.println("onCompleted is executing");
             }
         };
-        final StreamObserver<ProductInfoOuterClass.Product> productStreamObserver = asyncProductInfoStub.updateProduct(streamObserver);
-        productStreamObserver.onNext(ProductInfoOuterClass.Product.newBuilder().setId("1").build());
-        productStreamObserver.onNext(ProductInfoOuterClass.Product.newBuilder().setId("2").build());
-        productStreamObserver.onNext(ProductInfoOuterClass.Product.newBuilder().setId("3").build());
+        final StreamObserver<Product> productStreamObserver = asyncProductInfoStub.updateProduct(streamObserver);
+        productStreamObserver.onNext(Product.newBuilder().setId("1").build());
+        productStreamObserver.onNext(Product.newBuilder().setId("2").build());
+        productStreamObserver.onNext(Product.newBuilder().setId("3").build());
         productStreamObserver.onCompleted();
         try {
             Thread.sleep(500000);
@@ -66,9 +66,9 @@ public class GrpcClient {
 
     // 双向流RPC
     public void processProductInfo(){
-        StreamObserver<ProductInfoOuterClass.ProductId> streamObserver = new StreamObserver<ProductInfoOuterClass.ProductId>() {
+        StreamObserver<ProductId> streamObserver = new StreamObserver<ProductId>() {
             @Override
-            public void onNext(ProductInfoOuterClass.ProductId productId) {
+            public void onNext(ProductId productId) {
                 System.out.println(productId.getValue());
             }
 
@@ -82,10 +82,10 @@ public class GrpcClient {
                 System.out.println("onCompleted is execting");
             }
         };
-        final StreamObserver<ProductInfoOuterClass.Product> productStreamObserver = asyncProductInfoStub.processProduct(streamObserver);
-        productStreamObserver.onNext(ProductInfoOuterClass.Product.newBuilder().setId("4").build());
-        productStreamObserver.onNext(ProductInfoOuterClass.Product.newBuilder().setId("5").build());
-        productStreamObserver.onNext(ProductInfoOuterClass.Product.newBuilder().setId("6").build());
+        final StreamObserver<Product> productStreamObserver = asyncProductInfoStub.processProduct(streamObserver);
+        productStreamObserver.onNext(Product.newBuilder().setId("4").build());
+        productStreamObserver.onNext(Product.newBuilder().setId("5").build());
+        productStreamObserver.onNext(Product.newBuilder().setId("6").build());
         productStreamObserver.onCompleted();
     }
 
