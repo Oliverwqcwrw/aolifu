@@ -5,7 +5,13 @@ package com.aolifu.proto;
 service ProductInfo{
   rpc addProduct(Product) returns (ProductId);
 
-  rpc getProduuct(ProductId) returns (Product);
+  rpc getProduct(ProductId) returns (Product);
+
+  rpc searchProduct(ProductId) returns (stream Product);
+
+  rpc updateProduct(stream Product) returns (ProductId);
+
+  rpc processProduct(stream Product) returns (stream ProductId);
 }
 
 message Product{

@@ -1472,11 +1472,16 @@ public final class ProductInfoOuterClass {
       "\n\021ProductInfo.proto\022\020com.aolifu.proto\"8\n" +
       "\007Product\022\n\n\002id\030\001 \001(\t\022\014\n\004name\030\002 \001(\t\022\023\n\013de" +
       "scription\030\003 \001(\t\"\032\n\tProductId\022\r\n\005value\030\001 " +
-      "\001(\t2\232\001\n\013ProductInfo\022D\n\naddProduct\022\031.com." +
+      "\001(\t2\375\002\n\013ProductInfo\022D\n\naddProduct\022\031.com." +
       "aolifu.proto.Product\032\033.com.aolifu.proto." +
-      "ProductId\022E\n\013getProduuct\022\033.com.aolifu.pr" +
-      "oto.ProductId\032\031.com.aolifu.proto.Product" +
-      "b\006proto3"
+      "ProductId\022D\n\ngetProduct\022\033.com.aolifu.pro" +
+      "to.ProductId\032\031.com.aolifu.proto.Product\022" +
+      "I\n\rsearchProduct\022\033.com.aolifu.proto.Prod" +
+      "uctId\032\031.com.aolifu.proto.Product0\001\022I\n\rup" +
+      "dateProduct\022\031.com.aolifu.proto.Product\032\033" +
+      ".com.aolifu.proto.ProductId(\001\022L\n\016process" +
+      "Product\022\031.com.aolifu.proto.Product\032\033.com" +
+      ".aolifu.proto.ProductId(\0010\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

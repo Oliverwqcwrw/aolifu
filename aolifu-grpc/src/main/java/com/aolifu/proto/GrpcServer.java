@@ -2,6 +2,7 @@ package com.aolifu.proto;
 
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
+import io.grpc.stub.StreamObserver;
 
 import java.io.IOException;
 import java.util.Random;
@@ -20,6 +21,64 @@ public class GrpcServer {
             final ProductInfoOuterClass.ProductId build =ProductInfoOuterClass.ProductId.newBuilder().setValue(new Random().nextInt() + "").build();
             responseObserver.onNext(build);
             responseObserver.onCompleted();
+        }
+
+        @Override
+        public void searchProduct(com.aolifu.proto.ProductInfoOuterClass.ProductId request,
+                                  io.grpc.stub.StreamObserver<com.aolifu.proto.ProductInfoOuterClass.Product> responseObserver){
+
+            for (int  i = 1;i < 10;i++) {
+                final ProductInfoOuterClass.Product build = ProductInfoOuterClass.Product.newBuilder().setId(i + "").build();
+                responseObserver.onNext(build);
+            }
+            responseObserver.onCompleted();
+        }
+
+        @Override
+        public io.grpc.stub.StreamObserver<com.aolifu.proto.ProductInfoOuterClass.Product> updateProduct(
+                io.grpc.stub.StreamObserver<com.aolifu.proto.ProductInfoOuterClass.ProductId> responseObserver){
+
+            return new StreamObserver<ProductInfoOuterClass.Product>() {
+                int i = 1;
+                @Override
+                public void onNext(ProductInfoOuterClass.Product product) {
+                    System.out.println(product.getId());
+                    i++;
+                }
+
+                @Override
+                public void onError(Throwable throwable) {
+
+                }
+
+                @Override
+                public void onCompleted() {
+                    responseObserver.onNext(ProductInfoOuterClass.ProductId.newBuilder().setValue(i + "").build());
+                    responseObserver.onCompleted();
+                }
+            };
+        }
+
+        @Override
+        public io.grpc.stub.StreamObserver<com.aolifu.proto.ProductInfoOuterClass.Product> processProduct(
+                io.grpc.stub.StreamObserver<com.aolifu.proto.ProductInfoOuterClass.ProductId> responseObserver) {
+            return new StreamObserver<ProductInfoOuterClass.Product>() {
+                @Override
+                public void onNext(ProductInfoOuterClass.Product product) {
+                    System.out.println(product.getId());
+                    responseObserver.onNext(ProductInfoOuterClass.ProductId.newBuilder().setValue(product.getId()).build());
+                }
+
+                @Override
+                public void onError(Throwable throwable) {
+
+                }
+
+                @Override
+                public void onCompleted() {
+                    responseObserver.onCompleted();
+                }
+            };
         }
     }
 
