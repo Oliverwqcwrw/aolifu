@@ -1,5 +1,8 @@
-package com.aolifu.proto;
+package com.aolifu.grpc;
 
+import com.aolifu.proto.Product;
+import com.aolifu.proto.ProductId;
+import com.aolifu.proto.ProductInfoGrpc;
 import io.grpc.Channel;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;

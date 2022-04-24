@@ -13,6 +13,8 @@ service ProductInfo{
   rpc updateProduct(stream Product) returns (ProductId);
 
   rpc processProduct(stream Product) returns (stream ProductId);
+
+  rpc removeProduct(ProductId) returns (ProductId);
 }
 
 message Product{
@@ -23,4 +25,8 @@ message Product{
 
 message ProductId{
   string value = 1;
+}
+
+message ProductName{
+  string  value = 1;
 }

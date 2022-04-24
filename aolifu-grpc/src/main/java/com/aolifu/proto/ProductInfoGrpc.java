@@ -87,6 +87,18 @@ public final class ProductInfoGrpc {
           .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
               com.aolifu.proto.ProductId.getDefaultInstance()))
           .build();
+  @io.grpc.ExperimentalApi("https://github.com/grpc/grpc-java/issues/1901")
+  public static final io.grpc.MethodDescriptor<com.aolifu.proto.ProductId,
+      com.aolifu.proto.ProductId> METHOD_REMOVE_PRODUCT =
+      io.grpc.MethodDescriptor.<com.aolifu.proto.ProductId, com.aolifu.proto.ProductId>newBuilder()
+          .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+          .setFullMethodName(generateFullMethodName(
+              "ProductInfo", "removeProduct"))
+          .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+              com.aolifu.proto.ProductId.getDefaultInstance()))
+          .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+              com.aolifu.proto.ProductId.getDefaultInstance()))
+          .build();
 
   /**
    * Creates a new async stub that supports all call types for the service
@@ -150,6 +162,13 @@ public final class ProductInfoGrpc {
       return asyncUnimplementedStreamingCall(METHOD_PROCESS_PRODUCT, responseObserver);
     }
 
+    /**
+     */
+    public void removeProduct(com.aolifu.proto.ProductId request,
+        io.grpc.stub.StreamObserver<com.aolifu.proto.ProductId> responseObserver) {
+      asyncUnimplementedUnaryCall(METHOD_REMOVE_PRODUCT, responseObserver);
+    }
+
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
           .addMethod(
@@ -187,6 +206,13 @@ public final class ProductInfoGrpc {
                 com.aolifu.proto.Product,
                 com.aolifu.proto.ProductId>(
                   this, METHODID_PROCESS_PRODUCT)))
+          .addMethod(
+            METHOD_REMOVE_PRODUCT,
+            asyncUnaryCall(
+              new MethodHandlers<
+                com.aolifu.proto.ProductId,
+                com.aolifu.proto.ProductId>(
+                  this, METHODID_REMOVE_PRODUCT)))
           .build();
     }
   }
@@ -248,6 +274,14 @@ public final class ProductInfoGrpc {
       return asyncBidiStreamingCall(
           getChannel().newCall(METHOD_PROCESS_PRODUCT, getCallOptions()), responseObserver);
     }
+
+    /**
+     */
+    public void removeProduct(com.aolifu.proto.ProductId request,
+        io.grpc.stub.StreamObserver<com.aolifu.proto.ProductId> responseObserver) {
+      asyncUnaryCall(
+          getChannel().newCall(METHOD_REMOVE_PRODUCT, getCallOptions()), request, responseObserver);
+    }
   }
 
   /**
@@ -289,6 +323,13 @@ public final class ProductInfoGrpc {
       return blockingServerStreamingCall(
           getChannel(), METHOD_SEARCH_PRODUCT, getCallOptions(), request);
     }
+
+    /**
+     */
+    public com.aolifu.proto.ProductId removeProduct(com.aolifu.proto.ProductId request) {
+      return blockingUnaryCall(
+          getChannel(), METHOD_REMOVE_PRODUCT, getCallOptions(), request);
+    }
   }
 
   /**
@@ -324,13 +365,22 @@ public final class ProductInfoGrpc {
       return futureUnaryCall(
           getChannel().newCall(METHOD_GET_PRODUCT, getCallOptions()), request);
     }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<com.aolifu.proto.ProductId> removeProduct(
+        com.aolifu.proto.ProductId request) {
+      return futureUnaryCall(
+          getChannel().newCall(METHOD_REMOVE_PRODUCT, getCallOptions()), request);
+    }
   }
 
   private static final int METHODID_ADD_PRODUCT = 0;
   private static final int METHODID_GET_PRODUCT = 1;
   private static final int METHODID_SEARCH_PRODUCT = 2;
-  private static final int METHODID_UPDATE_PRODUCT = 3;
-  private static final int METHODID_PROCESS_PRODUCT = 4;
+  private static final int METHODID_REMOVE_PRODUCT = 3;
+  private static final int METHODID_UPDATE_PRODUCT = 4;
+  private static final int METHODID_PROCESS_PRODUCT = 5;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -360,6 +410,10 @@ public final class ProductInfoGrpc {
         case METHODID_SEARCH_PRODUCT:
           serviceImpl.searchProduct((com.aolifu.proto.ProductId) request,
               (io.grpc.stub.StreamObserver<com.aolifu.proto.Product>) responseObserver);
+          break;
+        case METHODID_REMOVE_PRODUCT:
+          serviceImpl.removeProduct((com.aolifu.proto.ProductId) request,
+              (io.grpc.stub.StreamObserver<com.aolifu.proto.ProductId>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -405,6 +459,7 @@ public final class ProductInfoGrpc {
               .addMethod(METHOD_SEARCH_PRODUCT)
               .addMethod(METHOD_UPDATE_PRODUCT)
               .addMethod(METHOD_PROCESS_PRODUCT)
+              .addMethod(METHOD_REMOVE_PRODUCT)
               .build();
         }
       }

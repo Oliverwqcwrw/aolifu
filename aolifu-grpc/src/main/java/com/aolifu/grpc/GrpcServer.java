@@ -1,5 +1,8 @@
-package com.aolifu.proto;
+package com.aolifu.grpc;
 
+import com.aolifu.proto.Product;
+import com.aolifu.proto.ProductId;
+import com.aolifu.proto.ProductInfoGrpc;
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
 import io.grpc.stub.StreamObserver;
@@ -11,7 +14,7 @@ public class GrpcServer {
 
     private Server server;
 
-    private static class ProductInfoService extends ProductInfoGrpc.ProductInfoImplBase{
+    private static class ProductInfoService extends ProductInfoGrpc.ProductInfoImplBase {
 
         @Override
         public void addProduct(Product request,

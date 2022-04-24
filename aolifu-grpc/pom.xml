@@ -62,6 +62,8 @@
           <protocArtifact>com.google.protobuf:protoc:3.12.0:exe:${os.detected.classifier}</protocArtifact>
           <pluginId>grpc-java</pluginId>
           <pluginArtifact>io.grpc:protoc-gen-grpc-java:1.4.0:exe:${os.detected.classifier}</pluginArtifact>
+          <outputDirectory>${project.basedir}/src/main/java</outputDirectory>
+          <clearOutputDirectory>false</clearOutputDirectory>
         </configuration>
         <executions>
           <execution>
