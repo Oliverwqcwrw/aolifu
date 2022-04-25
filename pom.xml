@@ -21,6 +21,7 @@
     <module>aolifu-dubbo-consumer</module>
     <module>aolifu-mq-starter</module>
     <module>aolifu-grpc</module>
+      <module>aolifu-agent</module>
   </modules>
 
   <name>Maven</name>
