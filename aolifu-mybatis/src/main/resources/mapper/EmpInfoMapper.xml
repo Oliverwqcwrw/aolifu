@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.aolifu.mybatis.mapper.EmpInfoMapper">
+
+    <resultMap id="EmpInoMap" type="com.aolifu.mybatis.entity.EmpInfo">
+        <id column="eid" property="id"/>
+
+        <result column="eage" property="age"/>
+        <result column="ephone" property="phone"/>
+
+        <discriminator javaType="String" column="did">
+            <case value="101" resultType="empInfo">
+                <result column="ename" property="name"/>
+            </case>
+            <case value="102" resultType="empInfo">
+                <result column="ejob" property="job"/>
+            </case>
+            <case value="103" resultType="empInfo">
+                <result column="eage" property="age"/>
+            </case>
+            <case value="104" resultType="empInfo">
+                <result column="ejob" property="job"/>
+            </case>
+            <case value="105" resultType="empInfo">
+                <result column="ephone" property="phone"/>
+            </case>
+            <case value="106" resultType="empInfo">
+                <result column="ejob" property="job"/>
+            </case>
+            <case value="107" resultType="empInfo">
+                <result column="ename" property="name"/>
+            </case>
+            <case value="108" resultType="empInfo">
+                <result column="ejob" property="job"/>
+            </case>
+            <case value="109" resultType="empInfo">
+                <result column="eage" property="age"/>
+            </case>
+            <case value="110" resultType="empInfo">
+                <result column="ejob" property="job"/>
+            </case>
+            <case value="111" resultType="empInfo">
+                <result column="ephone" property="phone"/>
+            </case>
+            <case value="112" resultType="empInfo">
+                <result column="ejob" property="job"/>
+            </case>
+            <case value="113" resultType="empInfo">
+                <result column="ename" property="name"/>
+            </case>
+            <case value="114" resultType="empInfo">
+                <result column="ejob" property="job"/>
+            </case>
+            <case value="115" resultType="empInfo">
+                <result column="eage" property="age"/>
+            </case>
+            <case value="116" resultType="empInfo">
+                <result column="ejob" property="job"/>
+            </case>
+            <case value="117" resultType="empInfo">
+                <result column="ephone" property="phone"/>
+            </case>
+            <case value="118" resultType="empInfo">
+                <result column="ejob" property="job"/>
+            </case>
+        </discriminator>
+    </resultMap>
+
+
+    <select id="queryAllEmpins"  resultMap="EmpInoMap">
+        select * from empinfo
+    </select>
+
+
+</mapper>
+
+

@@ -4,6 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.aolifu.mybatis.mapper.UserMapper">
 
+
     <select id="list" resultType="com.aolifu.mybatis.entity.User">
         select * from user
     </select>
