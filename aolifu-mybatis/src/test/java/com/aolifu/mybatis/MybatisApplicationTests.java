@@ -4,15 +4,10 @@ import com.aolifu.mybatis.entity.EmpInfo;
 import com.aolifu.mybatis.entity.User;
 import com.aolifu.mybatis.mapper.EmpInfoMapper;
 import com.aolifu.mybatis.mapper.UserMapper;
-import org.apache.ibatis.io.Resources;
-import org.apache.ibatis.session.SqlSession;
-import org.apache.ibatis.session.SqlSessionFactory;
-import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.io.Reader;
 import java.util.List;
 
 @SpringBootTest
