@@ -13,6 +13,7 @@
   <artifactId>aolifu</artifactId>
   <packaging>pom</packaging>
   <version>1.0</version>
+
   <modules>
     <module>aolifu-rocketMQ</module>
     <module>aolifu-nacos</module>
@@ -21,15 +22,11 @@
     <module>aolifu-dubbo-consumer</module>
     <module>aolifu-mq-starter</module>
     <module>aolifu-grpc</module>
-      <module>aolifu-agent</module>
-      <module>aolifu-dynamic-tp</module>
+    <module>aolifu-agent</module>
+    <module>aolifu-dynamic-tp</module>
+    <module>aolifu-mybatis</module>
+    <module>aolifu-ssl</module>
   </modules>
 
-  <name>Maven</name>
 
-
-
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-  </properties>
 </project>

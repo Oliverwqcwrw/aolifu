@@ -18,14 +18,14 @@ public class ExpandTest {
 
     @Test
     public void expandTest(){
-        HashMap<String, String> map = new HashMap<>(20);
+        HashMap<String, String> map = new HashMap<>(10000);
         final long start1 = System.nanoTime();
         for (int i = 0; i < 20; i++) {
             map.put("key" + i, "value");
         }
         System.out.println("Expansion takes nanoTime = " + (System.nanoTime() - start1));
 
-        HashMap<String,String> map2 = new HashMap<>(20, 1);
+        HashMap<String,String> map2 = new HashMap<>(10000, 1);
         final long start2 = System.nanoTime();
         for (int i = 0; i < 20; i++) {
             map2.put("key" + i, "value");
@@ -35,14 +35,14 @@ public class ExpandTest {
 
     @Test
     public void expandTest2(){
-        HashMap<String,String> map2 = new HashMap<>(20);
+        HashMap<String,String> map2 = new HashMap<>(10000, 1);
         final long start2 = System.nanoTime();
         for (int i = 0; i < 20; i++) {
             map2.put("key" + i, "value");
         }
         System.out.println("Without expansion takes nanoTime = " + (System.nanoTime() - start2));
 
-        HashMap<String, String> map = new HashMap<>(20);
+        HashMap<String, String> map = new HashMap<>(10000);
         final long start1 = System.nanoTime();
         for (int i = 0; i < 20; i++) {
             map.put("key" + i, "value");

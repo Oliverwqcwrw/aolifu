@@ -10,7 +10,6 @@ import org.openjdk.jmh.annotations.Scope;
 import org.openjdk.jmh.annotations.State;
 import org.openjdk.jmh.annotations.Warmup;
 import org.openjdk.jmh.infra.Blackhole;
-import org.openjdk.jmh.profile.GCProfiler;
 import org.openjdk.jmh.runner.Runner;
 import org.openjdk.jmh.runner.RunnerException;
 import org.openjdk.jmh.runner.options.Options;
@@ -27,7 +26,7 @@ import java.util.concurrent.TimeUnit;
 @State(Scope.Benchmark)
 public class HashMapLoadFactorBenchmark {
 
-    @Param({"1", "2", "3", "4", "5", "10", "15", "20"})
+    @Param({"20", "50"})
     public int arg;
 
     @Benchmark
@@ -51,7 +50,6 @@ public class HashMapLoadFactorBenchmark {
     public static void main(String[] args) throws RunnerException {
         Options opt = new OptionsBuilder()
                 .include(".*" + HashMapLoadFactorBenchmark.class.getSimpleName() + ".*")
-                .addProfiler(GCProfiler.class)
                 .build();
 
         new Runner(opt).run();
