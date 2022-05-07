@@ -3,6 +3,7 @@ package com.aolifu.mybatis;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.nio.ByteBuffer;
@@ -13,6 +14,8 @@ import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.zip.CRC32;
+import java.util.zip.CheckedInputStream;
 
 public class ExpandTest {
 
@@ -114,5 +117,33 @@ public class ExpandTest {
         System.out.println(channel.size());
     }
 
+    @Test
+    public void longTest(){
+        Boolean a = null;
+        if (a) {
+            System.out.println("111");
+        }
+    }
+
+    @Test
+    public void crc32Test() throws Exception {
+        String path1 = "/Users/wangqiang/Downloads/temp/20220327_hippo4j-grafana.json";
+        String path2 = "/Users/wangqiang/Downloads/temp/20220327_hippo4j-grafana2.json";
+        String fileCRCCode1 = getFileCRCCode(path1);
+        String fileCRCCode2 = getFileCRCCode(path2);
+        System.out.println(fileCRCCode1);
+        System.out.println(fileCRCCode2);
+        System.out.println(fileCRCCode1.equals(fileCRCCode2));
+    }
+
+    public String getFileCRCCode(String path) throws Exception {
+        File file = new File(path);
+        FileInputStream fileinputstream = new FileInputStream(file);
+        CRC32 crc32 = new CRC32();
+        for (CheckedInputStream checkedinputstream = new CheckedInputStream(fileinputstream, crc32);
+             checkedinputstream.read() != -1;
+        ){}
+            return Long.toHexString(crc32.getValue());
+    }
 
 }
