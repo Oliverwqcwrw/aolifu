@@ -7,7 +7,9 @@ import org.apache.rocketmq.client.producer.DefaultMQProducer;
 import org.apache.rocketmq.common.message.Message;
 import org.apache.rocketmq.remoting.exception.RemotingException;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 
+@Configuration
 public class ExampleProducer extends RocketMQProducer{
 
     public static void main(String[] args) throws MQBrokerException, RemotingException, InterruptedException, MQClientException {
