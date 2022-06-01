@@ -15,7 +15,6 @@
   <version>1.0</version>
 
   <modules>
-    <module>aolifu-rocketMQ</module>
     <module>aolifu-nacos</module>
     <module>aolifu-dubbo-api</module>
     <module>aolifu-dubbo-provider</module>
@@ -26,6 +25,8 @@
     <module>aolifu-dynamic-tp</module>
     <module>aolifu-mybatis</module>
     <module>aolifu-ssl</module>
+    <module>aolifu-rocketMQ</module>
+    <module>aolifu-rxjava</module>
   </modules>
 
 
