@@ -25,7 +25,6 @@
     <module>aolifu-dynamic-tp</module>
     <module>aolifu-mybatis</module>
     <module>aolifu-ssl</module>
-    <module>aolifu-rocketMQ</module>
     <module>aolifu-rxjava</module>
   </modules>
 
