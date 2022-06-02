@@ -1,4 +1,4 @@
-package com.aolifu.rocketmq.mybatis;
+package com.aolifu.mybatis;
 
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;

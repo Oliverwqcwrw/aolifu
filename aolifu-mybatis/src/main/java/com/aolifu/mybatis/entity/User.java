@@ -1,4 +1,4 @@
-package com.aolifu.rocketmq.mybatis.entity;
+package com.aolifu.mybatis.entity;
 
 import java.io.Serializable;
 

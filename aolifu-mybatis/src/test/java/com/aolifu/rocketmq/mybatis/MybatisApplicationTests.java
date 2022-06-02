@@ -1,9 +1,9 @@
 package com.aolifu.rocketmq.mybatis;
 
-import com.aolifu.rocketmq.mybatis.entity.EmpInfo;
-import com.aolifu.rocketmq.mybatis.entity.User;
-import com.aolifu.rocketmq.mybatis.mapper.EmpInfoMapper;
-import com.aolifu.rocketmq.mybatis.mapper.UserMapper;
+import com.aolifu.mybatis.entity.EmpInfo;
+import com.aolifu.mybatis.entity.User;
+import com.aolifu.mybatis.mapper.EmpInfoMapper;
+import com.aolifu.mybatis.mapper.UserMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

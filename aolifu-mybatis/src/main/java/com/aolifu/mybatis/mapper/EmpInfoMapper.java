@@ -1,6 +1,6 @@
-package com.aolifu.rocketmq.mybatis.mapper;
+package com.aolifu.mybatis.mapper;
 
-import com.aolifu.rocketmq.mybatis.entity.EmpInfo;
+import com.aolifu.mybatis.entity.EmpInfo;
 
 import java.util.List;
 

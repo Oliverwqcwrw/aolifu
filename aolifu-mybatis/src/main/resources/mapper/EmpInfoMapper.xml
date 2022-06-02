@@ -2,9 +2,9 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.aolifu.rocketmq.mybatis.mapper.EmpInfoMapper">
+<mapper namespace="com.aolifu.mybatis.mapper.EmpInfoMapper">
 
-    <resultMap id="EmpInoMap" type="com.aolifu.rocketmq.mybatis.entity.EmpInfo">
+    <resultMap id="EmpInoMap" type="com.aolifu.mybatis.entity.EmpInfo">
         <id column="eid" property="id"/>
 
         <result column="eage" property="age"/>

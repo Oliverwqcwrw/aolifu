@@ -26,6 +26,8 @@
     <module>aolifu-mybatis</module>
     <module>aolifu-ssl</module>
     <module>aolifu-rxjava</module>
+    <module>aolifu-caffeine</module>
+    <module>aolifu-netty</module>
   </modules>
 
 
