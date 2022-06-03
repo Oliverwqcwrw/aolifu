@@ -1,2 +1,2 @@
 Manifest-Version: 1.0
-Premain-Class: com.aolifu.rocketmq.SkywalkingAgent
+Premain-Class: com.aolifu.agent.SkywalkingAgent

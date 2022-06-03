@@ -49,7 +49,7 @@
               </manifest>
               <manifestEntries>
                 <Premain-Class>
-                    com.aolifu.rocketmq.SkywalkingAgent
+                  com.aolifu.agent.SkywalkingAgent
                 </Premain-Class>
               </manifestEntries>
             </archive>
