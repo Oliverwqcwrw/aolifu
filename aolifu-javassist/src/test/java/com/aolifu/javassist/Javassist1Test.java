@@ -12,6 +12,7 @@ public class Javassist1Test {
     public void setSuperClass() {
         ClassPool pool = ClassPool.getDefault();
         CtClass cc = pool.get("com.aolifu.javassist.Cat");
+        cc.defrost();
         cc.setSuperclass(pool.get("com.aolifu.javassist.Animal"));
         cc.writeFile();
         System.out.println(cc.getSuperclass());
@@ -38,7 +39,7 @@ public class Javassist1Test {
     @SneakyThrows
     public void defrost() {
         ClassPool pool = ClassPool.getDefault();
-        CtClass cc = pool.makeClass("com.aolifu.javassist.Cat");
+        CtClass cc = pool.makeClass("com.aolifu.javassist.Pig");
         cc.setSuperclass(pool.get("com.aolifu.javassist.Animal"));
         cc.writeFile();
         cc.defrost();
@@ -50,7 +51,7 @@ public class Javassist1Test {
     @SneakyThrows
     public void stopPrun() {
         ClassPool pool = ClassPool.getDefault();
-        CtClass cc = pool.makeClass("com.aolifu.javassist.Cat");
+        CtClass cc = pool.makeClass("com.aolifu.javassist.Chicken");
         cc.stopPruning(true);
         cc.writeFile();
     }

@@ -1,3 +1,4 @@
+/*
 package com.aolifu.rocketmq.mybatis;
 
 import com.aolifu.mybatis.entity.EmpInfo;
@@ -35,3 +36,4 @@ class MybatisApplicationTests {
 
 }
 
+*/
