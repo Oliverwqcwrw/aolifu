@@ -28,6 +28,7 @@
     <module>aolifu-rxjava</module>
     <module>aolifu-caffeine</module>
     <module>aolifu-netty</module>
+    <module>aolifu-javassist</module>
   </modules>
 
 
