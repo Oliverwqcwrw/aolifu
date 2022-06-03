@@ -1,8 +1,8 @@
 package com.aolifu.grpc.grpc;
 
-import com.aolifu.rocketmq.proto.Product;
-import com.aolifu.rocketmq.proto.ProductId;
-import com.aolifu.rocketmq.proto.ProductInfoGrpc;
+import com.aolifu.proto.Product;
+import com.aolifu.proto.ProductId;
+import com.aolifu.proto.ProductInfoGrpc;
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
 import io.grpc.stub.StreamObserver;

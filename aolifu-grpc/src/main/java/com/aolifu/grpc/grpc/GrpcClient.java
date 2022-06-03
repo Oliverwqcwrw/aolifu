@@ -1,8 +1,8 @@
 package com.aolifu.grpc.grpc;
 
-import com.aolifu.rocketmq.proto.Product;
-import com.aolifu.rocketmq.proto.ProductId;
-import com.aolifu.rocketmq.proto.ProductInfoGrpc;
+import com.aolifu.proto.Product;
+import com.aolifu.proto.ProductId;
+import com.aolifu.proto.ProductInfoGrpc;
 import io.grpc.Channel;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
