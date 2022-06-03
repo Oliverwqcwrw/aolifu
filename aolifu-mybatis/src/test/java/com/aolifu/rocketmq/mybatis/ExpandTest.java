@@ -75,27 +75,6 @@ public class ExpandTest {
     }
 
     @Test
-    public void test4() throws IOException {
-        Path path = Paths.get("/Users/wangqiang/Downloads/temp/20220327_hippo4j-grafana.json");
-
-        FileChannel fc = FileChannel.open(path, StandardOpenOption.READ);
-
-        long length = fc.size();
-
-        ByteBuffer buffer = fc.map(FileChannel.MapMode.READ_ONLY, 0, length);
-
-        int size = buffer.limit();
-
-        byte[] data = new byte[size];
-
-        buffer.get(data);
-
-        String msg = new String(data, 0, data.length, StandardCharsets.UTF_8);
-
-        System.out.println(msg);
-    }
-
-    @Test
     public void byteBufferTest(){
         byte[] arr = new byte[]{1,2,3,4,5};
         ByteBuffer buffer1  = ByteBuffer.wrap(arr);
@@ -106,15 +85,6 @@ public class ExpandTest {
         slice.put((byte) 6);
         System.out.println(slice);
 
-    }
-
-    @Test
-    public void fileChannelTest() throws IOException {
-        File file = new File("/Users/wangqiang/Downloads/temp/20220327_hippo4j-grafana.json");
-        final FileChannel channel = new RandomAccessFile(file,"rw").getChannel();
-        channel.position(100);
-
-        System.out.println(channel.size());
     }
 
 }
