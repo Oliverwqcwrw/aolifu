@@ -29,6 +29,7 @@
     <module>aolifu-caffeine</module>
     <module>aolifu-netty</module>
     <module>aolifu-javassist</module>
+    <module>aolifu-elasticjob</module>
   </modules>
 
 

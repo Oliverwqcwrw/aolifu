@@ -1,0 +1,18 @@
+elasticjob:
+  jobs:
+    myJob:
+      elasticJobClass: com.aolifu.elasticjob.lite.MyJob
+      cron: 0/5 * * * * ?
+      timeZone: GMT+08:00
+      shardingTotalCount: 3
+    myJob2:
+      elasticJobClass: com.aolifu.elasticjob.lite.MyJob2
+      cron: 0/5 * * * * ?
+      timeZone: GMT+08:00
+      shardingTotalCount: 3
+
+
+
+  regCenter:
+    serverLists: localhost:2181
+    namespace: elasticjob-lite-springboot
