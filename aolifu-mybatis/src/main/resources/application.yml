@@ -4,6 +4,8 @@ spring:
     password: root
     url: jdbc:mysql://localhost:3306/java?useUnicode=true&characterEncoding=UTF-8
     driver-class-name: com.mysql.cj.jdbc.Driver
+  application:
+    name: aolifu-mybatis
 
 server:
   port: 10001
