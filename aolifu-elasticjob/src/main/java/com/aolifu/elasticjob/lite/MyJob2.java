@@ -9,20 +9,8 @@ public class MyJob2 implements SimpleJob {
     
     @Override
     public void execute(ShardingContext context) {
-        switch (context.getShardingItem()) {
-            case 0:
-                // do something by sharding item 0
-                System.out.println("MyJob2 sharding item 0");
-                break;
-            case 1:
-                // do something by sharding item 1
-                System.out.println("MyJob2 sharding item 1");
-                break;
-            case 2:
-                // do something by sharding item 2
-                System.out.println("MyJob2 sharding item 2");
-                break;
-            // case n: ...
+        if (context.getShardingItem() == 0) {
+            System.out.println("Deal Business");
         }
     }
     
