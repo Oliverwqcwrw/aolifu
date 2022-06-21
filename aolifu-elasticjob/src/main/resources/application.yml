@@ -10,9 +10,21 @@ elasticjob:
       cron: 0/5 * * * * ?
       timeZone: GMT+08:00
       shardingTotalCount: 3
-
-
-
   regCenter:
     serverLists: localhost:2181
     namespace: elasticjob-lite-springboot
+  tracing:
+    type: RDB
+  dump:
+    port: 9888
+
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/java?useUnicode=true&characterEncoding=UTF-8
+    driver-class-name:  com.mysql.cj.jdbc.Driver
+    username: root
+    password: root
+
+server:
+  port: 10002
+
