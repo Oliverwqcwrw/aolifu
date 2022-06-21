@@ -15,6 +15,7 @@ elasticjob:
     namespace: elasticjob-lite-springboot
   tracing:
     type: RDB
+    # echo "dump@myJob" | nc localhost 9888 > dump.txt
   dump:
     port: 9888
 
