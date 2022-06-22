@@ -8,3 +8,4 @@
 ## 6、Integrate with netty
 ## 7、Integrate with rxjava
 ## 8、Integrate with elastic job
+## 9、Integrate with RocketMQ
