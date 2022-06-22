@@ -5,7 +5,7 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.aolifu</groupId>
-  <artifactId>aolifu-mq-starter</artifactId>
+  <artifactId>aolifu-rocketmq</artifactId>
   <version>1.0</version>
   <build>
     <plugins>
@@ -20,7 +20,7 @@
     </plugins>
   </build>
   
-  <name>aolifu-mq-starter</name>
+  <name>aolifu-rocketmq</name>
 
 
   <dependencies>
@@ -33,13 +33,11 @@
       <groupId>org.springframework</groupId>
       <artifactId>spring-context</artifactId>
       <version>5.3.17</version>
-      <scope>compile</scope>
     </dependency>
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot</artifactId>
       <version>2.6.5</version>
-      <scope>compile</scope>
     </dependency>
 
   </dependencies>
