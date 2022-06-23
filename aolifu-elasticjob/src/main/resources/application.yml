@@ -10,6 +10,11 @@ elasticjob:
       cron: 0/5 * * * * ?
       timeZone: GMT+08:00
       shardingTotalCount: 3
+    multipleTaskJob:
+      elasticJobClass: com.aolifu.elasticjob.lite.MultipleTaskJob
+      cron: 0/5 * * * * ?
+      timeZone: GMT+08:00
+      shardingTotalCount: 3
   regCenter:
     serverLists: localhost:2181
     namespace: elasticjob-lite-springboot
