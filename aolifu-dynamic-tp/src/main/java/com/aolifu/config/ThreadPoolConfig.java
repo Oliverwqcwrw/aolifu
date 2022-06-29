@@ -19,11 +19,6 @@ public class ThreadPoolConfig {
         ThreadPoolExecutor dynamicExecutor = ThreadPoolBuilder.builder()
                 .threadFactory(threadPoolId)
                 .threadPoolId(threadPoolId)
-                .corePoolSize(5)
-                .maxPoolNum(10)
-                .workQueue(new ResizableCapacityLinkedBlockIngQueue(1024))
-                .rejected(new ThreadPoolExecutor.AbortPolicy())
-                .keepAliveTime(6000, TimeUnit.MILLISECONDS)
                 .dynamicPool()
                 .build();
         return dynamicExecutor;

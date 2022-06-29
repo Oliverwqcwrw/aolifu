@@ -10,8 +10,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  */
 @EnableDynamicThreadPool
 @SpringBootApplication
-public class App {
+public class DynamicTpApplication {
     public static void main( String[] args ) {
-        SpringApplication.run(App.class, args);
+        SpringApplication.run(DynamicTpApplication.class, args);
     }
 }
