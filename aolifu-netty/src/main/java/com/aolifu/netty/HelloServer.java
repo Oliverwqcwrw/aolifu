@@ -1,27 +1,32 @@
 package com.aolifu.netty;
 
+import com.aolifu.netty.handler.ServerHandler;
 import io.netty.bootstrap.ServerBootstrap;
-import io.netty.channel.ChannelHandlerContext;
-import io.netty.channel.ChannelInboundHandlerAdapter;
+import io.netty.channel.Channel;
+import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelInitializer;
+import io.netty.channel.ChannelPipeline;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
-import io.netty.handler.codec.string.StringDecoder;
+import io.netty.handler.codec.LengthFieldBasedFrameDecoder;
+import io.netty.handler.timeout.IdleStateHandler;
 
 /**
- * @author ycw
- * @version v1.0
- * @date 2022/3/25 15:02
- * @description netty作为服务端
+ * @author wangqiang32
+ * @date 2022/6/29
  */
 public class HelloServer {
     
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
+        NioEventLoopGroup bossGroup = new NioEventLoopGroup(1);
+        NioEventLoopGroup workGroup = new NioEventLoopGroup(4);
+        
+        
         //1启动器 负责组装netty组件 启动服务器
-        new ServerBootstrap()
+        final ChannelFuture future = new ServerBootstrap()
                 //2 BossEventLoopGroup,WorkerEventLoopGroup(selector,thread),group组
-                .group(new NioEventLoopGroup())
+                .group(bossGroup, workGroup)
                 //3 选择服务器的ServerSocketChannel实现
                 .channel(NioServerSocketChannel.class)
                 //4boss负责链接worker（child）负责读写 ，决定了worker(child)能执行哪些操作（handler）
@@ -30,15 +35,14 @@ public class HelloServer {
                     @Override
                     protected void initChannel(NioSocketChannel ch) throws Exception {
                         //6 添加具体的 handler
-                        ch.pipeline().addLast(new StringDecoder());//将ByteBuf转化为string
-                        ch.pipeline().addLast(new ChannelInboundHandlerAdapter() {
-                            @Override
-                            public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
-                                System.out.println("读到数据" + msg);
-                            }
-                        });
+                        final ChannelPipeline pipeline = ch.pipeline();
+                        pipeline.addLast(new IdleStateHandler(10, 0, 0));
+                        pipeline.addLast(new LengthFieldBasedFrameDecoder(1024, 0, 4, -4, 0));
+                        pipeline.addLast(new ServerHandler());
                     }
                 }).bind(10001);
-        
+        final Channel channel = future.sync().channel();
+        channel.closeFuture();
+    
     }
 }
