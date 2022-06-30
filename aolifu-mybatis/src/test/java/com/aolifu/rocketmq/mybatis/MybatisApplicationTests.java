@@ -1,10 +1,10 @@
-/*
 package com.aolifu.rocketmq.mybatis;
 
 import com.aolifu.mybatis.entity.EmpInfo;
 import com.aolifu.mybatis.entity.User;
 import com.aolifu.mybatis.mapper.EmpInfoMapper;
 import com.aolifu.mybatis.mapper.UserMapper;
+import jdk.nashorn.internal.ir.annotations.Ignore;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -21,12 +21,14 @@ class MybatisApplicationTests {
     EmpInfoMapper empInfoMapper;
 
     @Test
+    @Ignore
     public void contextLoads() {
         List<User> list = userMapper.list();
         System.out.println(list.size());
     }
 
     @Test
+    @Ignore
     public  void queryAllEmpById() {
 
         List<EmpInfo> empInfo = empInfoMapper.queryAllEmpins();
@@ -36,4 +38,3 @@ class MybatisApplicationTests {
 
 }
 
-*/

@@ -19,3 +19,20 @@ logging:
     com:
       aolifu:
         mapper: info
+
+rocketmq:
+  name-server: localhost:9876
+  producer:
+    group: default_producer_group
+    tls-enable: true
+    access-key: rocketmq2
+    secret-key: 12345678
+
+  consumer:
+    access-key: rocketmq2
+    tls-enable: true
+    secret-key: 12345678
+
+tls:
+  client:
+    trustCertPath: /Users/wangqiang/Downloads/software/github/rocketmq-all-4.9.4-bin-release/tls/ca.pem
