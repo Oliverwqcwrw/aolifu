@@ -4,7 +4,7 @@ import com.aolifu.mybatis.entity.EmpInfo;
 import com.aolifu.mybatis.entity.User;
 import com.aolifu.mybatis.mapper.EmpInfoMapper;
 import com.aolifu.mybatis.mapper.UserMapper;
-import jdk.nashorn.internal.ir.annotations.Ignore;
+import org.junit.Ignore;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
