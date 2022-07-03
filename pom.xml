@@ -31,6 +31,7 @@
     <module>aolifu-javassist</module>
     <module>aolifu-elasticjob</module>
     <module>aolifu-elasticsearch</module>
+    <module>aolifu-design-mode</module>
   </modules>
 
 
