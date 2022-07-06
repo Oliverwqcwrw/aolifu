@@ -74,7 +74,7 @@ public class HelloClient {
             return;
         }
         
-        ChannelFuture future = bootstrap.connect("127.0.0.1", 10001);
+        ChannelFuture future = bootstrap.connect("127.0.0.1", 10008);
         
         future.addListener(new ChannelFutureListener() {
             public void operationComplete(ChannelFuture futureListener) throws Exception {

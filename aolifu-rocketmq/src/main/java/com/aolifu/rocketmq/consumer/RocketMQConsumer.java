@@ -8,7 +8,7 @@ import org.springframework.boot.ApplicationRunner;
 
 public class RocketMQConsumer  implements ApplicationRunner {
     
-    private DefaultMQPushConsumer consumer = new DefaultMQPushConsumer();
+    private DefaultMQPushConsumer consumer = new DefaultMQPushConsumer("DEFAULT_CONSUME_GROUP", true);
     
     
     @Override

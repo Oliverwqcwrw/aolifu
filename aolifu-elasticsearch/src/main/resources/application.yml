@@ -2,6 +2,6 @@ spring:
   elasticsearch:
     uris: localhost:9200
 server:
-  port: 10002
+  port: 10007
 
 

@@ -40,7 +40,7 @@ public class HelloServer {
                         pipeline.addLast(new LengthFieldBasedFrameDecoder(1024, 0, 4, -4, 0));
                         pipeline.addLast(new ServerHandler());
                     }
-                }).bind(10001);
+                }).bind(10008);
         final Channel channel = future.sync().channel();
         channel.closeFuture();
     
