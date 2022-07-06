@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 @Controller
 public class ConfigController {
@@ -23,7 +24,8 @@ public class ConfigController {
 
     @GetMapping(value = "/getConfig")
     @ResponseBody
-    public boolean get() {
+    public boolean get() throws InterruptedException {
+        TimeUnit.SECONDS.sleep(5);
         return useLocalCache;
     }
 
