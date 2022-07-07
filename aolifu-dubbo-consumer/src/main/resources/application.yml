@@ -1,5 +1,5 @@
 server:
-  port: 9000
+  port: 10009
 
 dubbo:
   registry:
@@ -11,6 +11,8 @@ dubbo:
     base-packages: com.aolifu.dubbo
   consumer:
     check: false
+  protocol:
+    port: 20881
 
 spring:
   application:

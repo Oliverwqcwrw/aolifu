@@ -1,4 +1,4 @@
-package com.aolifu.dubbo.consumer;
+package com.aolifu.dubbo.consumer.controller;
 
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.aolifu.dubbo.api.ProviderService;
@@ -9,10 +9,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping
-public class Consumer   {
+public class ConsumerController {
  
     // 使用兼容注入，可以使用dubbo原生注解@Reference注入
-    @Reference(version = "1.0.0")
+    @Reference(version = "1.0.0", check = false)
     ProviderService service;
  
     @GetMapping(value = "/hello/{name}")
