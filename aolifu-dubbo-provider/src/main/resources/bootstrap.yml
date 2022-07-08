@@ -35,28 +35,33 @@ spring:
       active-alarm: 80  # 活跃度报警阈值；假设线程池最大线程数 10，当线程数达到 8 发起报警
       capacity-alarm: 80  # 容量报警阈值；假设阻塞队列容量 100，当容量达到 80 发起报警
       alarm-interval: 8  # 报警间隔，同一线程池下同一报警纬度，在 interval 时间内只会报警一次，单位秒
-      receive: xxx
-      # 省略其它配置
-      adapter-executors:
-        # threadPoolKey 代表线程池标识
-        - threadPoolKey: 'dubbo-provider'
-          # mark 为三方线程池框架类型，参见文初已支持框架集合
-          mark: 'Dubbo'
-          corePoolSize: 50
-          maximumPoolSize: 50
-            # 线程池配置
       executors:
-          - thread-pool-id: 'custom-provider'  # 线程池标识
-            core-pool-size: 10  # 核心线程数
-            maximum-pool-size: 10  # 最大线程数
-            queue-capacity: 10  # 阻塞队列大小
-            execute-time-out: 1000  # 执行超时时间，超过此时间发起报警
-            blocking-queue: 'LinkedBlockingQueue'  # 阻塞队列名称，参考 QueueTypeEnum，支持 SPI
-            rejected-handler: 'AbortPolicy'  # 拒绝策略名称，参考 RejectedPolicies，支持 SPI
-            keep-alive-time: 1024  # 线程存活时间，单位秒
-            allow-core-thread-time-out: true  # 是否允许核心线程超时
-            thread-name-prefix: 'dubbo-provider'  # 线程名称前缀
+        - thread-pool-id: 'custom-provider'  # 线程池标识
+          core-pool-size: 10  # 核心线程数
+          maximum-pool-size: 10  # 最大线程数
+          queue-capacity: 10  # 阻塞队列大小
+          execute-time-out: 1000  # 执行超时时间，超过此时间发起报警
+          blocking-queue: 'LinkedBlockingQueue'  # 阻塞队列名称，参考 QueueTypeEnum，支持 SPI
+          rejected-handler: 'AbortPolicy'  # 拒绝策略名称，参考 RejectedPolicies，支持 SPI
+          keep-alive-time: 1024  # 线程存活时间，单位秒
+          allow-core-thread-time-out: true  # 是否允许核心线程超时
+          thread-name-prefix: 'custom-provider'  # 线程名称前缀
       collect-type: metric
+
+      config-file-type: yaml
+      nacos:
+        data-id: hippo4j-nacos.yaml
+        group: DEFAULT_GROUP
+  cloud:
+    nacos:
+      config:
+        server-addr: 127.0.0.1:8848
+        extension-configs:
+          - data-id: hippo4j-nacos.yaml
+            group: DEFAULT_GROUP
+            refresh: true
+
+
 
 management:
   metrics:

@@ -21,5 +21,4 @@ public class ThreadPoolConfig {
                 .build();
         return dynamicExecutor;
     }
-
 }
