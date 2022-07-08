@@ -14,7 +14,7 @@ public class ProviderController {
     
     @GetMapping(value = "/getFruit/{name}")
     public String getFruit(@PathVariable String name) {
-        final String apple = fruitApi.getFruit("apple");
+        final String apple = fruitApi.getFruit(name);
         return apple;
     }
     
