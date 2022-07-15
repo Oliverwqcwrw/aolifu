@@ -1,5 +1,6 @@
 package com.aolifu.rocketmq.mybatis;
 
+import cn.hutool.core.util.ReUtil;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
@@ -84,7 +85,22 @@ public class ExpandTest {
 
         slice.put((byte) 6);
         System.out.println(slice);
-
+    }
+    
+    @Test
+    public void regexTest() {
+        String confStr = "cloud-legionzone-*,game-ms-*,cloud-pc-browser";
+        final String[] split = confStr.split(",");
+        String target = "cloud-legionzone-zone";
+        System.out.println(ReUtil.isMatch(split[0], target));
+        
+    }
+    
+    @Test
+    public void stringCompareTest() {
+        String topica = "TEST1";
+        String topicb = "TEST2";
+        System.out.println(topica.compareTo(topicb));
     }
 
 }

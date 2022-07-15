@@ -13,7 +13,19 @@ public class ThreadPoolConfig {
     @Bean
     @DynamicThreadPool
     public ThreadPoolExecutor dynamicThreadPoolExecutor() {
-        String threadPoolId = "dubbo-provider";
+        String threadPoolId = "20880";
+        ThreadPoolExecutor dynamicExecutor = ThreadPoolBuilder.builder()
+                .threadFactory(threadPoolId)
+                .threadPoolId(threadPoolId)
+                .dynamicPool()
+                .build();
+        return dynamicExecutor;
+    }
+    
+    @Bean
+    @DynamicThreadPool
+    public ThreadPoolExecutor customThreadPoolExecutor() {
+        String threadPoolId = "custom-provider";
         ThreadPoolExecutor dynamicExecutor = ThreadPoolBuilder.builder()
                 .threadFactory(threadPoolId)
                 .threadPoolId(threadPoolId)
