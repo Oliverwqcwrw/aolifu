@@ -1,4 +1,4 @@
-package com.aolifu.rocketmq.mybatis;
+package com.aolifu.rocketmq.mybatis.rocketmq;
 
 import com.aolifu.mybatis.MybatisApplication;
 import lombok.SneakyThrows;
@@ -34,7 +34,7 @@ public class RocketMQTest {
     
     private static final String ORDER_TOPIC = "ORDER_TOPIC";
     
-    private static final String NAMESERVER_ADDR = "192.168.0.105:9876";
+    private static final String NAMESERVER_ADDR = "192.168.137.46:9876";
     
     private static final String PRODUCER_GROUP = "DEFAULT_GROUP";
     

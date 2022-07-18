@@ -70,6 +70,20 @@
       <artifactId>lombok</artifactId>
       <version>1.18.24</version>
     </dependency>
+    <!-- https://mvnrepository.com/artifact/io.openmessaging/openmessaging-api -->
+    <dependency>
+      <groupId>io.openmessaging</groupId>
+      <artifactId>openmessaging-api</artifactId>
+      <version>0.3.1-alpha</version>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/org.apache.rocketmq/rocketmq-openmessaging -->
+    <dependency>
+      <groupId>org.apache.rocketmq</groupId>
+      <artifactId>rocketmq-openmessaging</artifactId>
+      <version>4.9.3</version>
+    </dependency>
+
+
 
   </dependencies>
 
