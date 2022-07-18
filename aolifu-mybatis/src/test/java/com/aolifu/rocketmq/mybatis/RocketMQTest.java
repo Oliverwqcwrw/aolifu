@@ -3,16 +3,12 @@ package com.aolifu.rocketmq.mybatis;
 import com.aolifu.mybatis.MybatisApplication;
 import lombok.SneakyThrows;
 import org.apache.rocketmq.client.consumer.DefaultMQPushConsumer;
-import org.apache.rocketmq.client.consumer.listener.ConsumeConcurrentlyContext;
 import org.apache.rocketmq.client.consumer.listener.ConsumeConcurrentlyStatus;
 import org.apache.rocketmq.client.consumer.listener.ConsumeOrderlyContext;
 import org.apache.rocketmq.client.consumer.listener.ConsumeOrderlyStatus;
 import org.apache.rocketmq.client.consumer.listener.MessageListenerConcurrently;
 import org.apache.rocketmq.client.consumer.listener.MessageListenerOrderly;
-import org.apache.rocketmq.client.exception.MQBrokerException;
-import org.apache.rocketmq.client.exception.MQClientException;
 import org.apache.rocketmq.client.producer.DefaultMQProducer;
-import org.apache.rocketmq.client.producer.MQProducer;
 import org.apache.rocketmq.client.producer.MessageQueueSelector;
 import org.apache.rocketmq.client.producer.SendCallback;
 import org.apache.rocketmq.client.producer.SendResult;
@@ -20,15 +16,13 @@ import org.apache.rocketmq.common.consumer.ConsumeFromWhere;
 import org.apache.rocketmq.common.message.Message;
 import org.apache.rocketmq.common.message.MessageExt;
 import org.apache.rocketmq.common.message.MessageQueue;
+import org.apache.rocketmq.common.protocol.heartbeat.MessageModel;
 import org.apache.rocketmq.remoting.common.RemotingHelper;
-import org.apache.rocketmq.remoting.exception.RemotingException;
-import org.apache.rocketmq.spring.core.RocketMQTemplate;
 import org.junit.Ignore;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import javax.annotation.Resource;
-import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicLong;
@@ -36,23 +30,26 @@ import java.util.concurrent.atomic.AtomicLong;
 @SpringBootTest(classes = MybatisApplication.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class RocketMQTest {
     
-    @Resource
-    private RocketMQTemplate rocketMQTemplate;
-    
     private static final String TEST_TOPIC = "TEST_TOPIC";
     
     private static final String ORDER_TOPIC = "ORDER_TOPIC";
     
-    private static final String NAMESERVER_ADDR = "192.168.31.38:9876";
+    private static final String NAMESERVER_ADDR = "192.168.0.105:9876";
+    
+    private static final String PRODUCER_GROUP = "DEFAULT_GROUP";
+    
+    private static final String CONCURRENT_CONSUMER_GROUP = "CONCURRENT_DEFAULT_GROUP";
+    
+    private static final String BROADCAST_CONSUMER_GROUP = "BROADCAST_DEFAULT_GROUP";
     
     @Test
     @Ignore
     @SneakyThrows
     public void syncSendMsgTest() {
-        DefaultMQProducer producer = new DefaultMQProducer("DEFAULT_GROUP", true);
-        producer.setNamesrvAddr("192.168.137.226:9876");
+        DefaultMQProducer producer = new DefaultMQProducer(PRODUCER_GROUP, true);
+        producer.setNamesrvAddr(NAMESERVER_ADDR);
         Message message = new MessageExt();
-        message.setTopic("TEST_TOPIC");
+        message.setTopic(TEST_TOPIC);
         message.setBody("Hello World".getBytes("UTF-8"));
         producer.start();
         final SendResult send = producer.send(message);
@@ -90,10 +87,11 @@ public class RocketMQTest {
     @Ignore
     @SneakyThrows
     public void onewayTest() {
-        DefaultMQProducer producer = new DefaultMQProducer("DEFAULT_GROUP", true);
-        producer.setNamesrvAddr("192.168.137.163:9876");
+        DefaultMQProducer producer = new DefaultMQProducer(PRODUCER_GROUP, true);
+        producer.setNamesrvAddr(NAMESERVER_ADDR);
         Message message = new MessageExt();
-        message.setTopic("TEST_TOPIC");
+        message.setTopic(TEST_TOPIC);
+        
         message.setBody("Hello World".getBytes("UTF-8"));
         producer.start();
         producer.sendOneway(message);
@@ -104,13 +102,13 @@ public class RocketMQTest {
     @Ignore
     @SneakyThrows
     public void consumeTest() {
-        DefaultMQPushConsumer consumer = new DefaultMQPushConsumer("please_rename_unique_group_name");
+        DefaultMQPushConsumer consumer = new DefaultMQPushConsumer(CONCURRENT_CONSUMER_GROUP, true);
     
         // Specify name server addresses.
-        consumer.setNamesrvAddr("192.168.137.163:9876");
+        consumer.setNamesrvAddr(NAMESERVER_ADDR);
     
-        // Subscribe one more more topics to consume.
-        consumer.subscribe("TEST_TOPIC", "*");
+        // Subscribe one more topics to consume.
+        consumer.subscribe(TEST_TOPIC, "*");
         // Register callback to execute on arrival of messages fetched from brokers.
         consumer.registerMessageListener((MessageListenerConcurrently) (msgs, context) -> {
             System.out.printf("%s Receive New Messages: %s %n", Thread.currentThread().getName(), msgs);
@@ -119,8 +117,8 @@ public class RocketMQTest {
     
         //Launch the consumer instance.
         consumer.start();
-        TimeUnit.SECONDS.sleep(60);
-        System.out.printf("Consumer Started.%n");
+        TimeUnit.SECONDS.sleep(30);
+        consumer.shutdown();
     }
     
     @Test
@@ -190,6 +188,66 @@ public class RocketMQTest {
         consumer.start();
         TimeUnit.SECONDS.sleep(60);
         System.out.printf("Consumer Started.%n");
+    }
+    
+    @Test
+    @Ignore
+    @SneakyThrows
+    public void broadcastTest() {
+        DefaultMQPushConsumer consumer = new DefaultMQPushConsumer(BROADCAST_CONSUMER_GROUP);
+        consumer.setNamesrvAddr(NAMESERVER_ADDR);
+        consumer.setConsumeFromWhere(ConsumeFromWhere.CONSUME_FROM_FIRST_OFFSET);
+    
+        //set to broadcast mode
+        consumer.setMessageModel(MessageModel.BROADCASTING);
+    
+        consumer.subscribe(TEST_TOPIC, "*");
+    
+        consumer.registerMessageListener((MessageListenerConcurrently) (msgs, context) -> {
+            System.out.printf(Thread.currentThread().getName() + " Receive New Messages: " + msgs + "%n");
+            return ConsumeConcurrentlyStatus.CONSUME_SUCCESS;
+        });
+    
+        consumer.start();
+        TimeUnit.SECONDS.sleep(60);
+        System.out.printf("Broadcast Consumer Started.%n");
+    }
+    
+    @Test
+    @Ignore
+    @SneakyThrows
+    public void scheduledMessageProducerTest() {
+        DefaultMQProducer producer = new DefaultMQProducer(PRODUCER_GROUP);
+        producer.setNamesrvAddr(NAMESERVER_ADDR);
+        // Launch producer
+        producer.start();
+        int totalMessagesToSend = 50;
+        for (int i = 0; i < totalMessagesToSend; i++) {
+            Message message = new Message(TEST_TOPIC, ("Hello scheduled message " + i).getBytes());
+            // This message will be delivered to consumer 10 seconds later.
+            message.setDelayTimeLevel(10);
+            // Send the message
+            producer.send(message);
+            System.out.println(message);
+        }
+    
+        // Shutdown producer after use.
+        producer.shutdown();
+    }
+    
+    @Test
+    @Ignore
+    @SneakyThrows
+    public void batchSendTest() {
+        DefaultMQProducer producer = new DefaultMQProducer(PRODUCER_GROUP);
+        producer.setNamesrvAddr(NAMESERVER_ADDR);
+        producer.start();
+        List<Message> messages = new ArrayList<>();
+        messages.add(new Message(TEST_TOPIC, "TagA", "OrderID001", "Hello world 0".getBytes()));
+        messages.add(new Message(TEST_TOPIC, "TagB", "OrderID002", "Hello world 1".getBytes()));
+        messages.add(new Message(TEST_TOPIC, "TagC", "OrderID003", "Hello world 2".getBytes()));
+        producer.send(messages);
+        producer.shutdown();
     }
     
 }
