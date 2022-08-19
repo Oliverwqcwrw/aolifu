@@ -15,23 +15,23 @@
   <version>1.0</version>
 
   <modules>
-    <module>aolifu-nacos</module>
-    <module>aolifu-dubbo-api</module>
-    <module>aolifu-dubbo-provider</module>
-    <module>aolifu-dubbo-consumer</module>
-    <module>aolifu-rocketmq</module>
-    <module>aolifu-grpc</module>
-    <module>aolifu-agent</module>
-    <module>aolifu-dynamic-tp</module>
-    <module>aolifu-mybatis</module>
-    <module>aolifu-ssl</module>
-    <module>aolifu-rxjava</module>
-    <module>aolifu-caffeine</module>
-    <module>aolifu-netty</module>
-    <module>aolifu-javassist</module>
-    <module>aolifu-elasticjob</module>
-    <module>aolifu-elasticsearch</module>
-    <module>aolifu-design-mode</module>
+    <module>nacos</module>
+    <module>dubbo-api</module>
+    <module>dubbo-provider</module>
+    <module>dubbo-consumer</module>
+    <module>rocketmq</module>
+    <module>grpc</module>
+    <module>agent</module>
+    <module>dynamic-tp</module>
+    <module>mybatis</module>
+    <module>ssl</module>
+    <module>rxjava</module>
+    <module>caffeine</module>
+    <module>netty</module>
+    <module>javassist</module>
+    <module>elasticjob</module>
+    <module>elasticsearch</module>
+    <module>design-mode</module>
   </modules>
 
 
