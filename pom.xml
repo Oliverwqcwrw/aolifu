@@ -32,6 +32,8 @@
     <module>elasticjob</module>
     <module>elasticsearch</module>
     <module>design-mode</module>
+    <module>activemq</module>
+    <module>rabbitmq</module>
   </modules>
 
 
