@@ -6,6 +6,23 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
   application:
     name: aolifu-mybatis
+  data:
+    mongodb:
+      authentication-database: admin
+      host: localhost
+      port: 27017
+      username: root
+      password: root
+      database: db_student
+
+    cassandra:
+      contact-points: localhost
+      port: 9042
+      keyspace-name: hello_ca
+      username: cassandra
+      password: cassandra
+      session-name: Test Cluster
+      local-datacenter: datacenter1
 
 server:
   port: 10001
