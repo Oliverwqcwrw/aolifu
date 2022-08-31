@@ -13,8 +13,8 @@ public class ReceiveMessage {
 
     public static void main(String[] args) throws IOException, TimeoutException {
         ConnectionFactory connectionFactory = new ConnectionFactory();
-        connectionFactory.setUsername("guest");
-        connectionFactory.setPassword("guest");
+//        connectionFactory.setUsername("guest");
+//        connectionFactory.setPassword("guest");
         connectionFactory.setHost("localhost");
         connectionFactory.setPort(5672);
 
