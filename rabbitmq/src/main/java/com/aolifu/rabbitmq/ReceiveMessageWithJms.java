@@ -10,6 +10,7 @@ import javax.jms.MessageListener;
 import javax.jms.QueueConnection;
 import javax.jms.QueueSession;
 import javax.jms.Session;
+import javax.jms.TopicConnection;
 
 public class ReceiveMessageWithJms {
 
@@ -22,25 +23,15 @@ public class ReceiveMessageWithJms {
         connectionFactory.setPort(5672);
 
         RMQDestination  rmqDestination = new RMQDestination();
-        rmqDestination.setDestinationName("testQueue");
-        rmqDestination.setAmqpExchangeName("testExchange");
-        rmqDestination.setAmqpRoutingKey("testRoutingKey");
-        rmqDestination.setAmqpQueueName("testQueue");
+        rmqDestination.setDestinationName("testQueue3");
+        rmqDestination.setAmqpExchangeName("testExchange3");
+        rmqDestination.setAmqpRoutingKey("testRoutingKey3");
+        rmqDestination.setAmqpQueueName("testQueue3");
         rmqDestination.setAmqp(true);
 
-        connectionFactory.setConfirmListener(context -> {
-            final Message message = context.getMessage();// the message that is confirmed/nack-ed
-            try {
-                System.out.println(message.getJMSMessageID());
-            } catch (JMSException e) {
-                throw new RuntimeException(e);
-            }
-            context.isAck(); // whether the message is confirmed or nack-ed
-        });
 
-
-        final QueueConnection connection = connectionFactory.createQueueConnection();
-        final QueueSession session = connection.createQueueSession(false, Session.AUTO_ACKNOWLEDGE);
+        final TopicConnection connection = connectionFactory.createTopicConnection();
+        final Session session = connection.createTopicSession(false, Session.AUTO_ACKNOWLEDGE);
 
         final MessageConsumer consumer = session.createConsumer(rmqDestination);
         consumer.setMessageListener(new MessageListener() {

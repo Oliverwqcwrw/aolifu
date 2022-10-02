@@ -16,11 +16,11 @@ public class SendMessage {
         connectionFactory.setHost("localhost");
         connectionFactory.setPort(5672);
 
-        String exchangeName = "testExchange";
-        String routingKey = "testQueue";
+        String exchangeName = "testExchange3";
+        String routingKey = "testQueue3";
         Connection conn = connectionFactory.newConnection();
         final Channel channel = conn.createChannel();
-        channel.exchangeDeclare(exchangeName, "direct", true);
+        channel.exchangeDeclare(exchangeName, "topic", true);
         String queueName = channel.queueDeclare().getQueue();
         channel.queueBind(queueName, exchangeName, routingKey);
 
