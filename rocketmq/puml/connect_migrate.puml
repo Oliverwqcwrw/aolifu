@@ -1,0 +1,21 @@
+@startmindmap
+'https://plantuml.com/mindmap-diagram
+
+*[#bisque] 数据迁移
+**[#lightblue] MySQL
+***[#lightblue] musqldump
+***[#lightblue] datagrip 导出sql
+***[#lightblue] canal
+
+**[#tomato] redis
+***[#tomato] redis shake
+**[#green] mongodb
+***[#green] mongo export
+**[#lightseagreen] elasticsearch
+***[#lightseagreen] cos快照
+***[#lightseagreen] logstash
+***[#lightseagreen] elasticsearch dump
+
+
+
+@endmindmap

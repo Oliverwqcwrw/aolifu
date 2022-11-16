@@ -1,31 +1,55 @@
 package com.aolifu.elasticsearch;
 
 import cn.hutool.json.JSONUtil;
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import com.aolifu.elasticsearch.entity.ArticleEntity;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.Date;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 import org.apache.http.HttpHost;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.HttpPut;
+import org.elasticsearch.action.admin.cluster.settings.ClusterGetSettingsRequest;
+import org.elasticsearch.action.admin.cluster.settings.ClusterGetSettingsResponse;
+import org.elasticsearch.action.admin.cluster.shards.ClusterSearchShardsRequest;
+import org.elasticsearch.action.admin.indices.settings.get.GetSettingsRequest;
+import org.elasticsearch.action.admin.indices.settings.get.GetSettingsResponse;
 import org.elasticsearch.action.delete.DeleteRequest;
 import org.elasticsearch.action.delete.DeleteResponse;
+import org.elasticsearch.action.get.GetRequest;
+import org.elasticsearch.action.get.GetResponse;
 import org.elasticsearch.action.index.IndexRequest;
 import org.elasticsearch.action.index.IndexResponse;
 import org.elasticsearch.action.search.SearchRequest;
 import org.elasticsearch.action.search.SearchResponse;
 import org.elasticsearch.action.search.SearchScrollRequest;
+import org.elasticsearch.action.search.SearchShard;
 import org.elasticsearch.action.update.UpdateRequest;
 import org.elasticsearch.action.update.UpdateResponse;
 import org.elasticsearch.client.IndicesClient;
 import org.elasticsearch.client.Node;
+import org.elasticsearch.client.Request;
 import org.elasticsearch.client.RequestOptions;
+import org.elasticsearch.client.Response;
 import org.elasticsearch.client.RestClient;
 import org.elasticsearch.client.RestClientBuilder;
 import org.elasticsearch.client.RestHighLevelClient;
+import org.elasticsearch.client.cluster.RemoteInfoRequest;
+import org.elasticsearch.client.cluster.RemoteInfoResponse;
+import org.elasticsearch.client.core.MainResponse;
 import org.elasticsearch.client.indices.CreateIndexRequest;
 import org.elasticsearch.client.indices.CreateIndexResponse;
 import org.elasticsearch.common.unit.TimeValue;
 import org.elasticsearch.common.xcontent.XContentType;
 import org.elasticsearch.index.query.QueryBuilders;
 import org.elasticsearch.index.query.RangeQueryBuilder;
+import org.elasticsearch.index.shard.ShardId;
 import org.elasticsearch.search.Scroll;
 import org.elasticsearch.search.builder.SearchSourceBuilder;
 import org.junit.After;
@@ -42,6 +66,8 @@ public class EsRestClientTest {
 
     private RestHighLevelClient restHighLevelClient;
 
+    private RestClient restClient;
+
     private static final String TEST_INDEX = "aolifu_connect";
 
     @Before
@@ -50,6 +76,7 @@ public class EsRestClientTest {
         node = new Node(httpHost);
 
         restClientBuilder = RestClient.builder(node);
+        restClient = restClientBuilder.build();
         restHighLevelClient = new RestHighLevelClient(restClientBuilder);
     }
 
@@ -71,9 +98,11 @@ public class EsRestClientTest {
     @Test
     public void saveArticleTest() throws IOException {
         final ArticleEntity article = buildArticleEntity();
-        article.setId("3");
+        article.setId("5");
+        article.setContent("test");
         IndexRequest indexRequest = new IndexRequest(TEST_INDEX);
-        indexRequest.id(System.currentTimeMillis() + "")
+        indexRequest
+            .id(System.currentTimeMillis() + "")
             .source(JSONUtil.toJsonStr(article), XContentType.JSON);
         final IndexResponse response = restHighLevelClient.index(indexRequest, RequestOptions.DEFAULT);
         System.out.println(response.status());
@@ -108,10 +137,14 @@ public class EsRestClientTest {
         searchRequest.indices(TEST_INDEX);
 
         SearchSourceBuilder sourceBuilder = new SearchSourceBuilder();
-        sourceBuilder.query(QueryBuilders.termQuery("id", 1));
+        sourceBuilder.query(QueryBuilders.termQuery("id", 2));
         searchRequest.source(sourceBuilder);
 
         final SearchResponse search = restHighLevelClient.search(searchRequest, RequestOptions.DEFAULT);
+        if (search.getHits().getHits().length == 0) {
+            System.out.println("no data");
+            return;
+        }
         System.out.println(search.getHits().getHits()[0].getSourceAsString());
     }
 
@@ -138,7 +171,7 @@ public class EsRestClientTest {
         searchRequest.indices(TEST_INDEX);
         searchRequest.scroll(TimeValue.timeValueMinutes(1));
         SearchSourceBuilder searchSourceBuilder = new SearchSourceBuilder();
-        searchSourceBuilder.from(0).size(1);
+        searchSourceBuilder.from(0).size(3);
         searchRequest.source(searchSourceBuilder);
         final SearchResponse search = restHighLevelClient.search(searchRequest, RequestOptions.DEFAULT);
         System.out.println(search.getHits().getHits().length);
@@ -159,5 +192,101 @@ public class EsRestClientTest {
         article.setUserId(1);
         return article;
     }
+
+    @Test
+    public void searchShardNumberTest() throws IOException {
+        GetSettingsRequest getSettingsRequest = new GetSettingsRequest();
+        getSettingsRequest.indices(TEST_INDEX);
+        getSettingsRequest.names("index.number_of_shards");
+        final GetSettingsResponse settings = restHighLevelClient.indices().getSettings(getSettingsRequest, RequestOptions.DEFAULT);
+        System.out.println(settings);
+    }
+
+    @Test
+    public void searchShardInfoTest() throws IOException {
+        Request request = new Request(HttpGet.METHOD_NAME, "/aolifu_connect/_search_shards");
+        final Response response = restClient.performRequest(request);
+        System.out.println(response);
+        final InputStream content = response.getEntity().getContent();
+        byte arr[]=new byte[1024];
+        int len = content.read(arr);
+        System.out.println(new String(arr, 0, len));
+    }
+
+    @Test
+    public void searchArticleByShardTest() throws IOException {
+        SearchRequest searchRequest = new SearchRequest();
+        searchRequest.indices(TEST_INDEX);
+        searchRequest.preference("_shards:0");
+
+        SearchSourceBuilder sourceBuilder = new SearchSourceBuilder();
+        final RangeQueryBuilder rangeQueryBuilder = QueryBuilders.rangeQuery("id");
+        // sourceBuilder.query(QueryBuilders.termQuery("id", 2));
+        sourceBuilder.query(rangeQueryBuilder.gte(1));
+        searchRequest.source(sourceBuilder);
+
+        final SearchResponse search = restHighLevelClient.search(searchRequest, RequestOptions.DEFAULT);
+        if (search.getHits().getHits().length == 0) {
+            System.out.println("no data");
+            return;
+        }
+        System.out.println(search.getHits().getHits()[0].getSourceAsString());
+    }
+
+    @Test
+    public void parsePrimaryShard() throws IOException {
+        String str = "{\n" +
+            "  \"nodes\" : {\n" +
+            "    \"mT0DvEaeQDKXVOrsfqAm9g\" : {\n" +
+            "      \"name\" : \"aolifu-2.local\",\n" +
+            "      \"ephemeral_id\" : \"Pi-ID_96T6C1sXbIhrLLPg\",\n" +
+            "      \"transport_address\" : \"127.0.0.1:9300\",\n" +
+            "      \"attributes\" : {\n" +
+            "        \"ml.machine_memory\" : \"8589934592\",\n" +
+            "        \"xpack.installed\" : \"true\",\n" +
+            "        \"ml.max_open_jobs\" : \"20\"\n" +
+            "      }\n" +
+            "    }\n" +
+            "  },\n" +
+            "  \"indices\" : {\n" +
+            "    \"aolifu_connect\" : { }\n" +
+            "  },\n" +
+            "  \"shards\" : [\n" +
+            "    [\n" +
+            "      {\n" +
+            "        \"state\" : \"STARTED\",\n" +
+            "        \"primary\" : true,\n" +
+            "        \"node\" : \"mT0DvEaeQDKXVOrsfqAm9g\",\n" +
+            "        \"relocating_node\" : null,\n" +
+            "        \"shard\" : 0,\n" +
+            "        \"index\" : \"aolifu_connect\",\n" +
+            "        \"allocation_id\" : {\n" +
+            "          \"id\" : \"RY_36kOJR822OnthFq6L_w\"\n" +
+            "        }\n" +
+            "      }\n" +
+            "    ]\n" +
+            "  ]\n" +
+            "}\n";
+        Request request = new Request(HttpGet.METHOD_NAME, "/aolifu_connect/_search_shards");
+        final Response response = restClient.performRequest(request);
+        System.out.println(response);
+        final InputStream content = response.getEntity().getContent();
+        byte arr[]=new byte[1024];
+        int len = content.read(arr);
+        str = new String(arr, 0, len);
+        final JSONObject jsonObject = JSON.parseObject(str);
+        final List<Map.Entry<String, Object>> shards = jsonObject.entrySet().stream().filter(entry -> entry.getKey().equals("shards")).collect(Collectors.toList());
+        final JSONArray value = (JSONArray) shards.get(0).getValue();
+        final Iterator<Object> iterator = value.iterator();
+        while (iterator.hasNext()) {
+            final Object next = iterator.next();
+            final JSONObject object = (JSONObject) ((JSONArray) next).get(0);
+            if (object.getBoolean("primary")) {
+                System.out.println(object.getInteger("shard"));
+            }
+        }
+    }
+
+
 
 }
