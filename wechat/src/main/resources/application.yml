@@ -1,0 +1,8 @@
+server:
+  port:  20001
+  servlet:
+    context-path: /weixin
+
+spring:
+  application:
+    name: aolifu-wechat

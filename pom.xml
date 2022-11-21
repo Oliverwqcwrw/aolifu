@@ -34,6 +34,7 @@
     <module>design-mode</module>
     <module>activemq</module>
     <module>rabbitmq</module>
+    <module>wechat</module>
   </modules>
 
 
