@@ -38,6 +38,7 @@
     <module>iotdb</module>
     <module>shardingsphere</module>
     <module>cassandra</module>
+    <module>mongo</module>
   </modules>
 
   <dependencyManagement>

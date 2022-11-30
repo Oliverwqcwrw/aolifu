@@ -1,4 +1,4 @@
-package com.aolifu.mybatis.entity;
+package com.aolifu.mongo.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

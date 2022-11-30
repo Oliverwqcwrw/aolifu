@@ -1,6 +1,6 @@
-package com.aolifu.mybatis.mapper;
+package com.aolifu.mongo.mapper;
 
-import com.aolifu.mybatis.entity.Student;
+import com.aolifu.mongo.entity.Student;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 /*
@@ -12,8 +12,6 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 * MongoRepository<行对应的对象类型, 主键列类型>
 * */
 public interface StudentMapper extends MongoRepository<Student, String> {
-    
-    Student getAllByStudentName(String studentName);
         
 }
 
