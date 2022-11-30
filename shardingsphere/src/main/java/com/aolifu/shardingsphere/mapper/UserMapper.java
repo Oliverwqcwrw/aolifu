@@ -32,4 +32,6 @@ public interface UserMapper extends BaseMapper<User> {
       */
      void executeSql(@Param("sql") String sql);
 
+     void dropTable(@Param("sql") String sql);
+
 }

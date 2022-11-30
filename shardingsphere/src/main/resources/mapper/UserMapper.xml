@@ -23,5 +23,9 @@
         ${sql}
     </update>
 
+    <delete id="dropTable" parameterType="string">
+        ${sql}
+    </delete>
+
 
 </mapper>

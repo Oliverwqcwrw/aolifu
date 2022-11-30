@@ -32,4 +32,10 @@ public class UserTest {
         final List<User> users = userMapper.selectList(null);
         System.out.println(users);
     }
+
+    @Test
+    public void dropTableTest() {
+        String sql = "drop table user_1";
+        userMapper.dropTable(sql);
+    }
 }
