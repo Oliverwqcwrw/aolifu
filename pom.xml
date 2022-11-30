@@ -36,6 +36,7 @@
     <module>rabbitmq</module>
     <module>wechat</module>
     <module>iotdb</module>
+    <module>shardingsphere</module>
   </modules>
 
   <dependencyManagement>

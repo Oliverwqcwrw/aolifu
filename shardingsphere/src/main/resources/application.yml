@@ -1,0 +1,58 @@
+spring:
+  application:
+    name: aolifu-shardingsphere
+  shardingsphere:
+    datasource:
+      names: db_0
+      db_0:
+        type: com.zaxxer.hikari.HikariDataSource
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        jdbc-url: jdbc:mysql://localhost:3306/java?useUnicode=true&characterEncoding=UTF-8
+        username: root
+        password: root
+
+    mode:
+      type: Standalone
+      repository:
+        type: JDBC
+    rules:
+      sharding:
+        tables:
+          user:
+            actual-data-nodes: db_0.user_$->{1..31}
+            table-strategy:
+              standard:
+                sharding-column: create_time
+                sharding-algorithm-name: user_inline
+        sharding-algorithms:
+          user_inline:
+            type: CUSTOM
+            props:
+              # algorithm-expression: user_$->{create_time.date.day}
+              strategy: STANDARD
+              algorithmClassName: com.aolifu.shardingsphere.config.algorithm.CustomAlgorithm
+        binding-tables: user
+
+    props:
+      sql-show: true
+      sqlCommentParseEnabled: true
+
+  main:
+    allow-bean-definition-overriding: true
+
+
+server:
+  port: 10002
+
+mybatis:
+  mapper-locations: classpath:mapper/*Mapper.xml
+  type-aliases-package: com.aolifu.shardingsphere.entity
+
+logging:
+  level:
+    com:
+      aolifu:
+        mapper: info
+
+
+

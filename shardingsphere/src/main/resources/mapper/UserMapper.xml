@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.aolifu.shardingsphere.mapper.UserMapper">
+
+    <resultMap id="SelectTableCreateSqlResultMap" type="com.aolifu.shardingsphere.entity.CreateTableSql">
+        <result column="Table" property="table"/>
+        <result column="Create Table" property="createTable"/>
+    </resultMap>
+
+    <select id="getAllTableNameBySchema" parameterType="string" resultType="java.lang.String">
+        SELECT TABLES.TABLE_NAME
+        FROM information_schema.TABLES
+        WHERE TABLES.TABLE_SCHEMA = #{schema}
+    </select>
+
+    <select id="SelectTableCreateSql" parameterType="string" resultMap="SelectTableCreateSqlResultMap">
+        SHOW CREATE TABLE ${tableName}
+    </select>
+
+    <update id="executeSql" parameterType="string">
+        ${sql}
+    </update>
+
+
+</mapper>
