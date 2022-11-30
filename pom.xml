@@ -37,6 +37,7 @@
     <module>wechat</module>
     <module>iotdb</module>
     <module>shardingsphere</module>
+    <module>cassandra</module>
   </modules>
 
   <dependencyManagement>

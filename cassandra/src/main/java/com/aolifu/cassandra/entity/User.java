@@ -1,12 +1,12 @@
-package com.aolifu.mybatis.entity;
+package com.aolifu.cassandra.entity;
 
 import lombok.Data;
 import org.springframework.data.cassandra.core.mapping.PrimaryKey;
 import org.springframework.data.cassandra.core.mapping.Table;
 
-@Table("test_user")
+@Table("user")
 @Data
-public class TestUser {
+public class User {
 
     @PrimaryKey
     private Integer id;

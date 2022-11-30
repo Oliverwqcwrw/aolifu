@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: aolifu-cassandra
+  data:
+    cassandra:
+      contact-points: localhost
+      port: 9042
+      keyspace-name: hello_ca
+      username: cassandra
+      password: cassandra
+      session-name: Test Cluster
+      local-datacenter: datacenter1
+
+server:
+  port: 10003
+
