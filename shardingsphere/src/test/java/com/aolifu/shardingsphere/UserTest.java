@@ -24,7 +24,6 @@ public class UserTest {
             user.setCreateTime(LocalDateTime.now());
             userMapper.insert(user);
         }
-
     }
 
     @Test
@@ -34,8 +33,12 @@ public class UserTest {
     }
 
     @Test
+    public void truncateTableTest() {
+        userMapper.truncateTable("user_3");
+    }
+
+    @Test
     public void dropTableTest() {
-        String sql = "drop table user_1";
-        userMapper.dropTable(sql);
+        userMapper.dropTable("user_3");
     }
 }

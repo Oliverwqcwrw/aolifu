@@ -36,7 +36,10 @@ public class CustomAlgorithm implements StandardShardingAlgorithm<LocalDateTime>
 
     @Override public String doSharding(Collection collection, PreciseShardingValue preciseShardingValue) {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("_dd");
-        final String format = dtf.format((TemporalAccessor) preciseShardingValue.getValue());
+        String format = dtf.format((TemporalAccessor) preciseShardingValue.getValue());
+        if (format.startsWith("_0")) {
+            format = format.replace("0", "");
+        }
         return shardingTablesCheckAndCreatAndReturn(preciseShardingValue.getLogicTableName(),
             preciseShardingValue.getLogicTableName() + format);
     }

@@ -24,7 +24,11 @@
     </update>
 
     <delete id="dropTable" parameterType="string">
-        ${sql}
+        drop table ${tableName}
+    </delete>
+
+    <delete id="truncateTable" parameterType="string">
+        truncate table ${tableName}
     </delete>
 
 
