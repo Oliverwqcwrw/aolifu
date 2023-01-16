@@ -2,12 +2,15 @@ package com.aolifu.netty;
 
 import com.aolifu.netty.handler.ClientHandler;
 import com.aolifu.netty.handler.CustomHeartbeatHandler;
+import com.aolifu.netty.handler.TimeClientHandler;
+import com.aolifu.netty.handler.TimeDecoder;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelFutureListener;
 import io.netty.channel.ChannelInitializer;
+import io.netty.channel.ChannelOption;
 import io.netty.channel.ChannelPipeline;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
@@ -35,7 +38,7 @@ public class HelloClient {
     
     public void sendData() throws Exception {
         Random random = new Random(System.currentTimeMillis());
-        for (int i = 0; i < 10000; i++) {
+        for (int i = 0; i < 100; i++) {
             if (channel != null && channel.isActive()) {
                 String content = "client msg " + i;
                 ByteBuf buf = channel.alloc().buffer(5 + content.getBytes().length);
@@ -54,9 +57,11 @@ public class HelloClient {
             bootstrap
                     .group(workGroup)
                     .channel(NioSocketChannel.class)
+                .option(ChannelOption.SO_KEEPALIVE, true)
                     .handler(new ChannelInitializer<SocketChannel>() {
                         protected void initChannel(SocketChannel socketChannel) throws Exception {
                             ChannelPipeline p = socketChannel.pipeline();
+                            p.addLast(new TimeDecoder(), new TimeClientHandler());
                             p.addLast(new IdleStateHandler(0, 0, 5));
                             p.addLast(new LengthFieldBasedFrameDecoder(1024, 0, 4, -4, 0));
                             p.addLast(new ClientHandler(HelloClient.this));
@@ -69,13 +74,13 @@ public class HelloClient {
         }
     }
     
-    public void doConnect() {
+    public void doConnect() throws InterruptedException {
         if (channel != null && channel.isActive()) {
             return;
         }
         
         ChannelFuture future = bootstrap.connect("127.0.0.1", 10008);
-        
+        future.channel().closeFuture().sync();
         future.addListener(new ChannelFutureListener() {
             public void operationComplete(ChannelFuture futureListener) throws Exception {
                 if (futureListener.isSuccess()) {
@@ -87,7 +92,11 @@ public class HelloClient {
                     futureListener.channel().eventLoop().schedule(new Runnable() {
                         @Override
                         public void run() {
-                            doConnect();
+                            try {
+                                doConnect();
+                            } catch (InterruptedException e) {
+                                throw new RuntimeException(e);
+                            }
                         }
                     }, 10, TimeUnit.SECONDS);
                 }

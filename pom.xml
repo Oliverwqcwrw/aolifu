@@ -39,6 +39,7 @@
     <module>shardingsphere</module>
     <module>cassandra</module>
     <module>mongo</module>
+    <module>hive</module>
   </modules>
 
   <dependencyManagement>
