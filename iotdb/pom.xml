@@ -9,10 +9,8 @@
   </parent>
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>com.aolifu</groupId>
   <artifactId>aolifu-iotdb</artifactId>
   <version>1.0</version>
-
   <name>aolifu-iotdb</name>
   <dependencies>
     <!-- https://mvnrepository.com/artifact/org.apache.iotdb/iotdb-session -->
@@ -28,7 +26,6 @@
       <artifactId>junit-jupiter-api</artifactId>
       <scope>test</scope>
     </dependency>
-
 
   </dependencies>
 </project>

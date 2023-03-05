@@ -9,10 +9,8 @@
         <version>1.0</version>
     </parent>
 
-    <groupId>com.aolifu</groupId>
     <artifactId>aolifu-activemq</artifactId>
     <version>1.0</version>
-
     <name>aolifu-activemq</name>
 
     <properties>

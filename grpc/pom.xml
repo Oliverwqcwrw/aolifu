@@ -9,10 +9,8 @@
   </parent>
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>com.aolifu</groupId>
   <artifactId>aolifu-grpc</artifactId>
   <version>1.0</version>
-
   <name>aolifu-grpc</name>
   <dependencies>
     <!-- https://mvnrepository.com/artifact/com.google.protobuf/protobuf-java -->

@@ -10,13 +10,11 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.aolifu</groupId>
     <artifactId>aolifu-cassandra</artifactId>
     <version>1.0</version>
-
+    <name>aolifu-cassandra</name>
 
     <dependencies>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>

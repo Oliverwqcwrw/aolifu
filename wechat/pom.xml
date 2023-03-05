@@ -9,29 +9,18 @@
   </parent>
   <modelVersion>4.0.0</modelVersion>
   <artifactId>aolifu-wechat</artifactId>
+  <version>0.0.1</version>
+  <name>aolifu-wechat</name>
 
   <dependencies>
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-web</artifactId>
     </dependency>
-
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
-      <version>4.13.1</version>
-      <scope>test</scope>
     </dependency>
-
   </dependencies>
 
-  <build>
-    <plugins>
-      <plugin>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-maven-plugin</artifactId>
-        <version>2.2.2.RELEASE</version>
-      </plugin>
-    </plugins>
-  </build>
 </project>

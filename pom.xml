@@ -42,6 +42,11 @@
     <module>hive</module>
   </modules>
 
+  <properties>
+    <java.version>1.8</java.version>
+    <junit.version>4.13.1</junit.version>
+  </properties>
+
   <dependencyManagement>
     <dependencies>
       <dependency>
@@ -50,6 +55,12 @@
         <version>5.9.1</version>
         <type>pom</type>
         <scope>import</scope>
+      </dependency>
+      <dependency>
+        <groupId>junit</groupId>
+        <artifactId>junit</artifactId>
+        <version>${junit.version}</version>
+        <scope>test</scope>
       </dependency>
     </dependencies>
   </dependencyManagement>
