@@ -54,7 +54,7 @@
     <mysql.version>8.0.29</mysql.version>
     <mybatis-spring-boot-starter.version>2.2.2</mybatis-spring-boot-starter.version>
     <shardingsphere-jdbc-core-spring-boot-starter.version>5.2.1</shardingsphere-jdbc-core-spring-boot-starter.version>
-    <snakeyaml.version>1.33</snakeyaml.version>
+    <snakeyaml.version>2.0</snakeyaml.version>
     <mybatis-plus-boot-starter.version>3.5.2</mybatis-plus-boot-starter.version>
     <activemq-client.version>5.16.5</activemq-client.version>
     <junit-bom.version>5.9.1</junit-bom.version>
