@@ -9,23 +9,18 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.aolifu</groupId>
     <artifactId>aolifu-dubbo-consumer</artifactId>
-    <version>1.0</version>
+    <version>0.0.1</version>
     <packaging>jar</packaging>
 
     <dependencies>
-        <!-- https://mvnrepository.com/artifact/org.apache.dubbo/dubbo-spring-boot-starter -->
         <dependency>
             <groupId>org.apache.dubbo</groupId>
             <artifactId>dubbo-spring-boot-starter</artifactId>
-            <version>3.0.2.1</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/com.alibaba.boot/nacos-discovery-spring-boot-starter -->
         <dependency>
             <groupId>com.alibaba.boot</groupId>
             <artifactId>nacos-discovery-spring-boot-starter</artifactId>
-            <version>0.2.10</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -34,16 +29,8 @@
         <dependency>
             <groupId>com.aolifu</groupId>
             <artifactId>aolifu-dubbo-api</artifactId>
-            <version>1.0</version>
+            <version>0.0.1</version>
         </dependency>
     </dependencies>
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
 </project>

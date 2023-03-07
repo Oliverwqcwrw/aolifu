@@ -10,28 +10,18 @@
     </parent>
 
     <artifactId>aolifu-activemq</artifactId>
-    <version>1.0</version>
+    <version>0.0.1</version>
     <name>aolifu-activemq</name>
-
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    </properties>
 
     <dependencies>
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.13.1</version>
-            <scope>test</scope>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.apache.activemq/activemq-client -->
         <dependency>
             <groupId>org.apache.activemq</groupId>
             <artifactId>activemq-client</artifactId>
-            <version>5.16.5</version>
         </dependency>
-
-
     </dependencies>
 
 </project>

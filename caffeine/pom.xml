@@ -9,23 +9,18 @@
     </parent>
     
     <modelVersion>4.0.0</modelVersion>
-    
-    <groupId>com.aolifu</groupId>
     <artifactId>aolifu-caffeine</artifactId>
-    <version>1.0</version>
+    <version>0.0.1</version>
     
     
     <dependencies>
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.13.2</version>
-            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>com.github.ben-manes.caffeine</groupId>
             <artifactId>caffeine</artifactId>
-            <version>2.9.3</version>
         </dependency>
 
 

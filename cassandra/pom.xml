@@ -11,19 +11,16 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>aolifu-cassandra</artifactId>
-    <version>1.0</version>
-    <name>aolifu-cassandra</name>
+    <version>0.0.1</version>
 
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.18.24</version>
         </dependency>
         <!--   cassandra依赖     -->
         <dependency>

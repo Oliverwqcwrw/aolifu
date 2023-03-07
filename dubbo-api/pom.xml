@@ -10,10 +10,8 @@
   
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>com.aolifu</groupId>
   <artifactId>aolifu-dubbo-api</artifactId>
-  <version>1.0</version>
+  <version>0.0.1</version>
 
-  <name>aolifu-dubbo-api</name>
 
 </project>

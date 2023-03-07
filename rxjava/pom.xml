@@ -9,23 +9,20 @@
     </parent>
     
     <modelVersion>4.0.0</modelVersion>
-    
-    <groupId>com.aolifu</groupId>
+
     <artifactId>aolifu-rxjava</artifactId>
-    <version>1.0</version>
+    <version>0.0.1</version>
+    <name>aolifu-rxjava</name>
     
     
     <dependencies>
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.13.1</version>
-            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>io.reactivex.rxjava3</groupId>
             <artifactId>rxjava</artifactId>
-            <version>3.0.12</version>
         </dependency>
     </dependencies>
 </project>
