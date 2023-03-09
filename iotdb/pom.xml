@@ -10,17 +10,12 @@
   <modelVersion>4.0.0</modelVersion>
 
   <artifactId>aolifu-iotdb</artifactId>
-  <version>1.0</version>
-  <name>aolifu-iotdb</name>
   <dependencies>
-    <!-- https://mvnrepository.com/artifact/org.apache.iotdb/iotdb-session -->
     <dependency>
       <groupId>org.apache.iotdb</groupId>
       <artifactId>iotdb-session</artifactId>
-      <version>0.13.3</version>
     </dependency>
 
-    <!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api -->
     <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter-api</artifactId>

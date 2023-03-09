@@ -49,7 +49,6 @@
     <lombok.version>1.18.26</lombok.version>
     <assertj.version>3.19.0</assertj.version>
     <mockito.version>4.3.1</mockito.version>
-    <rocketmq.client.version>4.9.3</rocketmq.client.version>
     <rxjava.version>3.0.12</rxjava.version>
     <mysql.version>8.0.29</mysql.version>
     <mybatis-spring-boot-starter.version>2.2.2</mybatis-spring-boot-starter.version>
@@ -66,6 +65,22 @@
     <spring-cloud-starter-alibaba-nacos-config.version>2.2.5.RELEASE</spring-cloud-starter-alibaba-nacos-config.version>
     <hippo4j-core-spring-boot-starter.version>1.3.1-SNAPSHOT</hippo4j-core-spring-boot-starter.version>
     <hippo4j-spring-boot-starter-adapter-dubbo.version>1.3.1-SNAPSHOT</hippo4j-spring-boot-starter-adapter-dubbo.version>
+    <elasticjob-lite-core.version>3.0.1</elasticjob-lite-core.version>
+    <elasticjob-lite-spring-boot-starter.version>3.0.1</elasticjob-lite-spring-boot-starter.version>
+    <hutool-all.version>5.8.1</hutool-all.version>
+    <fastjson.version>1.2.83</fastjson.version>
+    <protobuf.version>3.19.6</protobuf.version>
+    <grpc.version>1.43.2</grpc.version>
+    <hive.version>2.3.9</hive.version>
+    <iotdb.version>0.13.3</iotdb.version>
+    <jmh.version>1.35</jmh.version>
+    <rocketmq-spring-boot-starter.version>2.2.2</rocketmq-spring-boot-starter.version>
+    <openmessaging.version>0.3.1-alpha</openmessaging.version>
+    <rocketmq.version>4.9.3</rocketmq.version>
+    <disruptor.version>3.4.4</disruptor.version>
+    <jsoup.version>1.15.3</jsoup.version>
+    <netty.version>4.1.77.Final</netty.version>
+    <rabbitmq.version>2.5.0</rabbitmq.version>
   </properties>
 
   <dependencyManagement>
@@ -104,7 +119,7 @@
       <dependency>
         <groupId>org.apache.rocketmq</groupId>
         <artifactId>rocketmq-client</artifactId>
-        <version>${rocketmq.client.version}</version>
+        <version>${rocketmq.version}</version>
       </dependency>
       <dependency>
         <groupId>io.reactivex.rxjava3</groupId>
@@ -180,6 +195,102 @@
         <groupId>cn.hippo4j</groupId>
         <artifactId>hippo4j-spring-boot-starter-adapter-dubbo</artifactId>
         <version>${hippo4j-spring-boot-starter-adapter-dubbo.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.shardingsphere.elasticjob</groupId>
+        <artifactId>elasticjob-lite-core</artifactId>
+        <version>${elasticjob-lite-core.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.shardingsphere.elasticjob</groupId>
+        <artifactId>elasticjob-lite-spring-boot-starter</artifactId>
+        <version>${elasticjob-lite-spring-boot-starter.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>cn.hutool</groupId>
+        <artifactId>hutool-all</artifactId>
+        <version>${hutool-all.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.alibaba</groupId>
+        <artifactId>fastjson</artifactId>
+        <version>${fastjson.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.google.protobuf</groupId>
+        <artifactId>protobuf-java</artifactId>
+        <version>${protobuf.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.grpc</groupId>
+        <artifactId>grpc-netty-shaded</artifactId>
+        <version>${grpc.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.grpc</groupId>
+        <artifactId>grpc-protobuf</artifactId>
+        <version>${grpc.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.grpc</groupId>
+        <artifactId>grpc-stub</artifactId>
+        <version>${grpc.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.hive</groupId>
+        <artifactId>hive-jdbc</artifactId>
+        <version>${hive.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.iotdb</groupId>
+        <artifactId>iotdb-session</artifactId>
+        <version>${iotdb.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.openjdk.jmh</groupId>
+        <artifactId>jmh-core</artifactId>
+        <version>${jmh.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.openjdk.jmh</groupId>
+        <artifactId>jmh-generator-annprocess</artifactId>
+        <version>${jmh.version}</version>
+        <scope>provided</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.rocketmq</groupId>
+        <artifactId>rocketmq-spring-boot-starter</artifactId>
+        <version>${rocketmq-spring-boot-starter.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.openmessaging</groupId>
+        <artifactId>openmessaging-api</artifactId>
+        <version>${openmessaging.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.rocketmq</groupId>
+        <artifactId>rocketmq-openmessaging</artifactId>
+        <version>${rocketmq.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.lmax</groupId>
+        <artifactId>disruptor</artifactId>
+        <version>${disruptor.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jsoup</groupId>
+        <artifactId>jsoup</artifactId>
+        <version>${jsoup.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.netty</groupId>
+        <artifactId>netty-all</artifactId>
+        <version>${netty.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.rabbitmq.jms</groupId>
+        <artifactId>rabbitmq-jms</artifactId>
+        <version>${rabbitmq.version}</version>
       </dependency>
     </dependencies>
   </dependencyManagement>

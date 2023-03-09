@@ -8,17 +8,13 @@
     <groupId>com.aolifu</groupId>
     <version>1.0</version>
   </parent>
-  <groupId>com.aolifu</groupId>
   <artifactId>aolifu-dynamic-tp</artifactId>
   <version>1.0</version>
-
-  <name>aolifu-dynamic-tp</name>
 
   <dependencies>
     <dependency>
       <groupId>cn.hippo4j</groupId>
       <artifactId>hippo4j-core-spring-boot-starter</artifactId>
-      <version>1.2.0</version>
     </dependency>
     <dependency>
       <groupId>org.springframework.boot</groupId>
