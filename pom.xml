@@ -25,7 +25,6 @@
     <module>dynamic-tp</module>
     <module>mybatis</module>
     <module>ssl</module>
-    <module>rxjava</module>
     <module>caffeine</module>
     <module>netty</module>
     <module>javassist</module>
@@ -49,7 +48,6 @@
     <lombok.version>1.18.26</lombok.version>
     <assertj.version>3.19.0</assertj.version>
     <mockito.version>4.3.1</mockito.version>
-    <rxjava.version>3.0.12</rxjava.version>
     <mysql.version>8.0.29</mysql.version>
     <mybatis-spring-boot-starter.version>2.2.2</mybatis-spring-boot-starter.version>
     <shardingsphere-jdbc-core-spring-boot-starter.version>5.2.1</shardingsphere-jdbc-core-spring-boot-starter.version>
@@ -81,6 +79,7 @@
     <jsoup.version>1.15.3</jsoup.version>
     <netty.version>4.1.77.Final</netty.version>
     <rabbitmq.version>2.5.0</rabbitmq.version>
+    <easyexcel.version>3.2.1</easyexcel.version>
   </properties>
 
   <dependencyManagement>
@@ -120,11 +119,6 @@
         <groupId>org.apache.rocketmq</groupId>
         <artifactId>rocketmq-client</artifactId>
         <version>${rocketmq.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>io.reactivex.rxjava3</groupId>
-        <artifactId>rxjava</artifactId>
-        <version>${rxjava.version}</version>
       </dependency>
       <dependency>
         <groupId>mysql</groupId>
@@ -292,6 +286,12 @@
         <artifactId>rabbitmq-jms</artifactId>
         <version>${rabbitmq.version}</version>
       </dependency>
+      <dependency>
+        <groupId>com.alibaba</groupId>
+        <artifactId>easyexcel</artifactId>
+        <version>${easyexcel.version}</version>
+      </dependency>
+
     </dependencies>
   </dependencyManagement>
 
