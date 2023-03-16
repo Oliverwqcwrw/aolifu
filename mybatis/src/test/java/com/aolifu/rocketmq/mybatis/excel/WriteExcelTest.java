@@ -4,7 +4,6 @@ import com.alibaba.excel.EasyExcel;
 import com.alibaba.excel.ExcelWriter;
 import com.alibaba.excel.util.ListUtils;
 import com.alibaba.excel.write.metadata.WriteSheet;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.time.LocalDateTime;
@@ -14,6 +13,7 @@ import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.ss.usermodel.BorderStyle;
 import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.HorizontalAlignment;
 import org.apache.poi.ss.usermodel.VerticalAlignment;
@@ -132,56 +132,158 @@ public class WriteExcelTest {
 
     @Test
     public void personalGradeAllTest() throws IOException {
-        String filePrifix = "/Users/wangqiang/Downloads/temp/";
-        String fileName = filePrifix + "personalGrade" + System.currentTimeMillis() + ".xls";
+        String filePrefix = "/Users/wangqiang/Downloads/temp/";
+        String fileName = filePrefix + "personalGrade" + System.currentTimeMillis() + ".xls";
 
         HSSFWorkbook hssfWorkbook = new HSSFWorkbook();
-        HSSFSheet sheet = hssfWorkbook.createSheet("Sheet1");
+        HSSFSheet sheet = hssfWorkbook.createSheet("成绩册");
 
         CellStyle cellStyle = hssfWorkbook.createCellStyle();
         cellStyle.setAlignment(HorizontalAlignment.CENTER);
         cellStyle.setVerticalAlignment(VerticalAlignment.CENTER);
+        //下边框
+        cellStyle.setBorderBottom(BorderStyle.THIN);
+        //左边框
+        cellStyle.setBorderLeft(BorderStyle.THIN);
+        //上边框
+        cellStyle.setBorderTop(BorderStyle.THIN);
+        //右边框
+        cellStyle.setBorderRight(BorderStyle.THIN);
         // 自动换行
         cellStyle.setWrapText(true);
 
         sheet.addMergedRegion(new CellRangeAddress(0, 3, 0, 0));
         sheet.addMergedRegion(new CellRangeAddress(0, 1, 1, 8));
         final HSSFRow row1 = sheet.createRow(0);
-        final HSSFCell row0Cell = row1.createCell(0);
-        row0Cell.setCellValue("序号");
-        row0Cell.setCellStyle(cellStyle);
+        final HSSFCell row1Cell1 = row1.createCell(0);
+        row1Cell1.setCellValue("序号");
+        row1Cell1.setCellStyle(cellStyle);
+
+        // 第一行第3列设置外边框
+        final HSSFCell row1Cell3 = row1.createCell(2);
+        row1Cell3.setCellStyle(cellStyle);
+
+        // 第一行第4列设置外边框
+        final HSSFCell row1Cell4 = row1.createCell(3);
+        row1Cell4.setCellStyle(cellStyle);
+
+        // 第一行第5列设置外边框
+        final HSSFCell row1Cell5 = row1.createCell(4);
+        row1Cell5.setCellStyle(cellStyle);
+
+        // 第一行第6列设置外边框
+        final HSSFCell row1Cell6 = row1.createCell(5);
+        row1Cell6.setCellStyle(cellStyle);
+
+        // 第一行第7列设置外边框
+        final HSSFCell row1Cell7 = row1.createCell(6);
+        row1Cell7.setCellStyle(cellStyle);
+
+        // 第一行第8列设置外边框
+        final HSSFCell row1Cell8 = row1.createCell(7);
+        row1Cell8.setCellStyle(cellStyle);
+
+        // 第一行第9列设置外边框
+        final HSSFCell row1Cell9 = row1.createCell(8);
+        row1Cell9.setCellStyle(cellStyle);
+
         final HSSFCell row1Cell = row1.createCell(1);
         row1Cell.setCellValue("成绩册");
         row1Cell.setCellStyle(cellStyle);
+
+
+        // 第二行第二列 设置外边框
+        final HSSFRow row2 = sheet.createRow(1);
+
+        // 第二行第1列 设置外边框
+        final HSSFCell row2Cell1 = row2.createCell(0);
+        row2Cell1.setCellStyle(cellStyle);
+
+        // 第二行第2列 设置外边框
+        final HSSFCell row2Cell2 = row2.createCell(1);
+        row2Cell2.setCellStyle(cellStyle);
+
+        // 第二行第三列 设置外边框
+        final HSSFCell row2Cell3 = row2.createCell(2);
+        row2Cell3.setCellStyle(cellStyle);
+
+        // 第二行第五列 设置外边框
+        final HSSFCell row2Cell5 = row2.createCell(4);
+        row2Cell5.setCellStyle(cellStyle);
+
+        // 第二行第六列 设置外边框
+        final HSSFCell row2Cell6 = row2.createCell(5);
+        row2Cell6.setCellStyle(cellStyle);
+
+        // 第二行第九列 设置外边框
+        final HSSFCell row2Cell7 = row2.createCell(6);
+        row2Cell7.setCellStyle(cellStyle);
+
+        // 第二行第九列 设置外边框
+        final HSSFCell row2Cell8 = row2.createCell(7);
+        row2Cell8.setCellStyle(cellStyle);
+
+        // 第二行第九列 设置外边框
+        final HSSFCell row2Cell9 = row2.createCell(8);
+        row2Cell9.setCellStyle(cellStyle);
 
         sheet.addMergedRegion(new CellRangeAddress(2, 3, 1, 2));
         sheet.addMergedRegion(new CellRangeAddress(2, 2, 3, 8));
         sheet.addMergedRegion(new CellRangeAddress(3, 3, 6, 8));
         final HSSFRow row3 = sheet.createRow(2);
-        final HSSFCell row3Cell1 = row3.createCell(1);
-        row3Cell1.setCellValue("级别");
+        final HSSFCell row3Cell2 = row3.createCell(1);
+        row3Cell2.setCellValue("级别");
+        row3Cell2.setCellStyle(cellStyle);
+
+        // 第3行第1列设置外边框
+        final HSSFCell row3Cell1 = row3.createCell(0);
         row3Cell1.setCellStyle(cellStyle);
+
+        // 第3行第8列设置外边框
+        final HSSFCell row3Cell8 = row3.createCell(7);
+        row3Cell8.setCellStyle(cellStyle);
+
+        // 第3行第9列设置外边框
+        final HSSFCell row3Cell9 = row3.createCell(8);
+        row3Cell9.setCellStyle(cellStyle);
 
         final HSSFCell row3Cell3 = row3.createCell(3);
         row3Cell3.setCellValue("名次");
         row3Cell3.setCellStyle(cellStyle);
 
-        final HSSFRow row4 = sheet.createRow(3);
-        final HSSFCell row4Cell3 = row4.createCell(3);
-        row4Cell3.setCellValue("第一名");
-        row4Cell3.setCellStyle(cellStyle);
 
-        final HSSFCell row4Cell4 = row4.createCell(4);
-        row4Cell4.setCellValue("第二名");
+        final HSSFRow row4 = sheet.createRow(3);
+        final HSSFCell row4Cell4 = row4.createCell(3);
+        row4Cell4.setCellValue("第一名");
         row4Cell4.setCellStyle(cellStyle);
 
-        final HSSFCell row4Cell5 = row4.createCell(5);
-        row4Cell5.setCellValue("第三名");
+        final HSSFCell row4Cell3 = row4.createCell(2);
+        row4Cell3.setCellStyle(cellStyle);
+
+        final HSSFCell row4Cell5 = row4.createCell(4);
+        row4Cell5.setCellValue("第二名");
         row4Cell5.setCellStyle(cellStyle);
 
-        final HSSFCell row4Cell6 = row4.createCell(6);
-        row4Cell6.setCellValue("第五名");
+        final HSSFCell row4Cell6 = row4.createCell(5);
+        row4Cell6.setCellValue("第三名");
         row4Cell6.setCellStyle(cellStyle);
+
+        final HSSFCell row4Cell7 = row4.createCell(6);
+        row4Cell7.setCellValue("第五名");
+        row4Cell7.setCellStyle(cellStyle);
+
+        // 第4行第1列设置外边框
+        final HSSFCell row4Cell1 = row4.createCell(0);
+        row4Cell1.setCellStyle(cellStyle);
+
+        // 第4行第8列设置外边框
+        final HSSFCell row4Cell8 = row4.createCell(7);
+        row4Cell8.setCellStyle(cellStyle);
+
+        // 第4行第9列设置外边框
+        final HSSFCell row4Cell9 = row4.createCell(8);
+        row4Cell9.setCellStyle(cellStyle);
+
 
         final List<PersonalGradeAll> alls = buildSubGroupData();
         int row = 4;
@@ -197,6 +299,18 @@ public class WriteExcelTest {
             cell1.setCellValue(seq);
             cell1.setCellStyle(cellStyle);
 
+            // 第3列设置外边框
+            final HSSFCell cell3 = hssfRow.createCell(2);
+            cell3.setCellStyle(cellStyle);
+
+            // 第9列设置外边框
+            final HSSFCell cell8 = hssfRow.createCell(7);
+            cell8.setCellStyle(cellStyle);
+
+            // 第9列设置外边框
+            final HSSFCell cell9 = hssfRow.createCell(8);
+            cell9.setCellStyle(cellStyle);
+
             // 第二列设置级别
             final HSSFCell cell2 = hssfRow.createCell(1);
             cell2.setCellValue(item.getSubGroup());
@@ -206,32 +320,36 @@ public class WriteExcelTest {
             final HSSFCell cell4 = hssfRow.createCell(3);
             cell4.setCellValue(formatRankingStr(item.getOneList()));
             cell4.setCellStyle(cellStyle);
-            sheet.setColumnWidth(3, 18 * 256);
+
 
             // 第五列设置第二名
             final HSSFCell cell5 = hssfRow.createCell(4);
             cell5.setCellValue(formatRankingStr(item.getTwoList()));
             cell5.setCellStyle(cellStyle);
-            sheet.setColumnWidth(4, 18 * 256);
+
 
             // 第六列设置第三名
             final HSSFCell cell6 = hssfRow.createCell(5);
             cell6.setCellValue(formatRankingStr(item.getThreeList()));
             cell6.setCellStyle(cellStyle);
-            sheet.setColumnWidth(5, 18 * 256);
+
 
             // 第七列设置第五名
             final HSSFCell cell7 = hssfRow.createCell(6);
             cell7.setCellValue(formatRankingStr(item.getFiveList()));
             cell7.setCellStyle(cellStyle);
-            sheet.setColumnWidth(6, 18 * 256);
+
 
             row++;
             seq++;
         }
+        // 设置序号列 列宽和列高
+        sheet.setColumnWidth(0, 25 * 80);
 
-        sheet.autoSizeColumn(0);
-
+        sheet.setColumnWidth(3, 18 * 256);
+        sheet.setColumnWidth(4, 18 * 256);
+        sheet.setColumnWidth(5, 18 * 256);
+        sheet.setColumnWidth(6, 18 * 256);
         FileOutputStream file = new FileOutputStream(fileName);
         hssfWorkbook.write(file);
         file.close();
