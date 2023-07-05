@@ -65,7 +65,7 @@
     <hutool.version>5.8.15</hutool.version>
     <fastjson.version>1.2.83</fastjson.version>
     <protobuf.version>3.19.6</protobuf.version>
-    <grpc.version>1.43.2</grpc.version>
+    <grpc.version>1.53.0</grpc.version>
     <hive.version>2.3.9</hive.version>
     <iotdb.version>0.13.3</iotdb.version>
     <jmh.version>1.35</jmh.version>
